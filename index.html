@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- Prevent FOUC: set theme before CSS -->
+  <script>
+  (function ()
+  {
+    try
+    {
+      var stored = localStorage.getItem('theme');
+      var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored || (systemDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    }
+    catch (e)
+    {
+      /* no-op */
+    }
+  }());
+  </script>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pedro Schenegoski — Portfolio</title>
+  <meta name="description" content="Portfolio of Pedro Schenegoski — administrative apprentice and game developer creating atmospheric experiences, tools, and mods." />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0c14" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f8ff" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://pedroschenegoski.dev/" />
+
+  <!-- Favicons / PWA (replace with your real assets) -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5b6cff" />
+
+  <!-- Security (prefer server headers; these are fallbacks) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self' https: data:; connect-src 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Pedro Schenegoski — Portfolio" />
+  <meta property="og:description" content="Game dev, tools, and atmospheric experiences." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pedroschenegoski.dev/" />
+  <meta property="og:image" content="https://pedroschenegoski.dev/og-image.jpg" />
+  <meta property="og:site_name" content="Pedro Schenegoski" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter/X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Pedro Schenegoski — Portfolio" />
+  <meta name="twitter:description" content="Game dev, tools, and atmospheric experiences." />
+  <meta name="twitter:image" content="https://pedroschenegoski.dev/og-image.jpg" />
+  <meta name="twitter:site" content="@yourhandle" />
+  <meta name="twitter:creator" content="@yourhandle" />
+
+  <!-- Preload hero image (critical) -->
+  <link rel="preload" as="image" href="/img/portrait.jpg" imagesrcset="/img/portrait.avif 1x, /img/portrait.webp 1x, /img/portrait.jpg 1x" imagesizes="(max-width: 960px) 92vw, 448px" fetchpriority="high" />
+
+  <!-- Styles & Script -->
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="script.js"></script>
+
+  <!-- JSON-LD: Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Pedro Schenegoski",
+    "jobTitle": "Administrative Apprentice & Game Developer",
+    "url": "https://pedroschenegoski.dev",
+    "image": "https://pedroschenegoski.dev/portrait.jpg",
+    "address":
+    {
+      "@type": "PostalAddress",
+      "addressLocality": "Ponta Grossa",
+      "addressRegion": "PR",
+      "addressCountry": "BR"
+    },
+    "sameAs":
+    [
+      "https://github.com/your-username",
+      "https://www.linkedin.com/in/your-handle",
+      "https://itch.io/profile/your-handle",
+      "https://youtube.com/@yourchannel"
+    ],
+    "knowsAbout": ["Unity", "C#", "Game Design", "Audio Systems", "Tools", "Level Design"]
+  }
+  </script>
+
+  <!-- JSON-LD: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://pedroschenegoski.dev",
+    "name": "Pedro Schenegoski — Portfolio",
+    "potentialAction":
+    {
+      "@type": "SearchAction",
+      "target": "https://pedroschenegoski.dev/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container">
+      <div class="brand">
+        <a href="#top" aria-label="Go to top">
+          <span class="logo">PS</span>
+          <span class="brand-name">Pedro Schenegoski</span>
+        </a>
+      </div>
+      <nav aria-label="Primary">
+        <ul class="nav">
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#game-design">Game Design</a></li>
+          <li><a href="#writing">Writing</a></li>
+          <li><a href="#resume">Resume</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li>
+            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme" aria-pressed="false">
+              <span aria-hidden="true">🌓</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="site-main" role="main">
+    <!-- Hero -->
+    <section class="hero reveal">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Crafting atmospheric games, tools, and stories</h1>
+          <p>
+            I’m Pedro — an administrative apprentice and solo game developer focused on
+            <strong>psychological tension</strong>, <strong>environmental storytelling</strong>,
+            and <strong>polished tools</strong> that help others build.
+          </p>
+          <p class="hero-cta">
+            <a class="btn primary" href="#projects">See my work</a>
+            <a class="btn secondary" href="#contact">Get in touch</a>
+          </p>
+        </div>
+
+        <div class="hero-photo" aria-hidden="true">
+          <picture>
+            <source srcset="img/portrait.avif" type="image/avif" />
+            <source srcset="img/portrait.webp" type="image/webp" />
+            <img
+              src="img/portrait.jpg"
+              alt=""
+              width="900"
+              height="1200"
+              decoding="async"
+              fetchpriority="high"
+              sizes="(max-width: 960px) 92vw, 448px"
+            />
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="section reveal">
+      <div class="container">
+        <header class="section-header">
+          <h2>Projects</h2>
+          <p>Highlights from my Unity tooling, prototypes, and modding work.</p>
+        </header>
+
+        <div class="grid cards">
+          <!-- PSX Horror Toolkit -->
+          <article class="card reveal">
+            <div class="card-media">
+              <img
+                src="img/psx-toolkit.jpg"
+                alt="Screenshot of PSX Horror Toolkit editor panels"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="card-body">
+              <h3>PSX Horror Toolkit</h3>
+              <p>
+                Commercial Unity asset with retro shaders, audio, interaction, inventory,
+                save/load, VFX, and basic AI. Designed for clarity and extensibility.
+              </p>
+              <ul class="meta">
+                <li>Unity • C# • IMGUI &amp; UI Toolkit</li>
+                <li>Editor Tools • Audio • Shaders</li>
+              </ul>
+              <div class="actions">
+                <a class="btn sm primary" href="https://example.com/product" target="_blank" rel="noopener noreferrer">Product Page</a>
+                <a class="btn sm" href="https://example.com/docs" target="_blank" rel="noopener noreferrer">Docs</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Psychological Horror Prototype -->
+          <article class="card reveal">
+            <div class="card-media">
+              <img
+                src="img/snow-research-site.jpg"
+                alt="Snowbound prototype scene"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="card-body">
+              <h3>Snowbound — Psychological Horror Prototype</h3>
+              <p>
+                30–60 min experience set in a remote snowy research site. Linear conversations,
+                reactional dialogue, and an alien twist hiding in the radio.
+              </p>
+              <ul class="meta">
+                <li>Exploration • Audio • Environmental Storytelling</li>
+                <li>Hallucinations • Non‑Euclidean Moments</li>
+              </ul>
+              <div class="actions">
+                <a class="btn sm primary" href="https://example.com/demo" target="_blank" rel="noopener noreferrer">Demo / Trailer</a>
+                <a class="btn sm" href="https://example.com/design" target="_blank" rel="noopener noreferrer">Design Notes</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Temporal Engineering (Minecraft mod) -->
+          <article class="card reveal">
+            <div class="card-media">
+              <img
+                src="img/temporal-engineering.jpg"
+                alt="Temporal Engineering mod artwork"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="card-body">
+              <h3>Temporal Engineering (Forge 1.18.2)</h3>
+              <p>
+                Modular multiblocks with Heat &amp; Coolant systems, Exotic Matter tiers, temporal
+                fields (slow/speed zones), and polished UX for status &amp; stability.
+              </p>
+              <ul class="meta">
+                <li>Java • Forge • Systems Design</li>
+                <li>UI/UX • Balancing • Documentation</li>
+              </ul>
+              <div class="actions">
+                <a class="btn sm primary" href="https://github.com/your-username/temporal-engineering" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="btn sm" href="https://example.com/mod" target="_blank" rel="noopener noreferrer">Mod Page</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- The Heart of the Garden -->
+          <article class="card reveal">
+            <div class="card-media">
+              <img
+                src="img/heart-of-the-garden.jpg"
+                alt="Scene from The Heart of the Garden"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="card-body">
+              <h3>The Heart of the Garden</h3>
+              <p>
+                A short emotional adventure gift: non‑Euclidean puzzles, time‑linked rooms,
+                and a core message — “My life only began after you.”
+              </p>
+              <ul class="meta">
+                <li>Unity • Narrative Design • Puzzle Design</li>
+                <li>Visual Metaphors • Atmosphere</li>
+              </ul>
+              <div class="actions">
+                <a class="btn sm primary" href="https://itch.io" target="_blank" rel="noopener noreferrer">itch.io</a>
+                <a class="btn sm" href="https://example.com/devlog" target="_blank" rel="noopener noreferrer">Devlog</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Game Design -->
+    <section id="game-design" class="section alt reveal">
+      <div class="container">
+        <header class="section-header">
+          <h2>Game Design</h2>
+          <p>Systems, encounters, and narrative structures I’ve designed or prototyped.</p>
+        </header>
+
+        <div class="grid cards">
+          <!-- System Design: Audio Manager -->
+          <article class="card reveal">
+            <div class="card-body">
+              <h3>Studio‑Grade Audio Manager (Unity)</h3>
+              <p>
+                Event‑driven triggers, mixer snapshots, priority handling for overlapping sounds,
+                zones with reverb and blending, and editor tooling for quick iteration.
+              </p>
+              <ul class="meta">
+                <li>Systems Design</li>
+                <li>UX for Tools</li>
+                <li>Iteration Pipelines</li>
+              </ul>
+              <div class="actions">
+                <a class="btn sm primary" href="https://example.com/audiodoc" target="_blank" rel="noopener noreferrer">Design Doc</a>
+                <a class="btn sm" href="https://github.com/your-username/audio-manager" target="_blank" rel="noopener noreferrer">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Encounter/Narrative Design: Snowbound -->
+          <article class="card reveal">
+            <div class="card-body">
+              <h3>Snowbound: Psychological Horror Loop</h3>
+              <p>
+                Linear conversations with reactional barks; radio operator as hidden antagonist.
+                Encounters leverage <em>non‑Euclidean reveals</em>, <em>audio misdirection</em>,
+                and <em>footstep implication</em> for persistent dread.
+              </p>
+              <ul class="meta">
+                <li>Encounter Design</li>
+                <li>Environmental Storytelling</li>
+                <li>Pacing &amp; Tension Curves</li>
+              </ul>
+              <div class="actions">
+                <a class="btn sm primary" href="https://example.com/encounter-notes" target="_blank" rel="noopener noreferrer">Encounter Notes</a>
+                <a class="btn sm" href="https://example.com/prototype-video" target="_blank" rel="noopener noreferrer">Prototype Video</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Puzzle Design: Time Spiral -->
+          <article class="card reveal">
+            <div class="card-body">
+              <h3>Time Spiral: Loop‑Breaking Puzzle</h3>
+              <p>
+                PT‑style two‑room loop where forward motion teleports the player invisibly until they
+                choose to go back, breaking the cycle. Teaches <strong>pattern recognition</strong>
+                and rewards <strong>contrarian thinking</strong>.
+              </p>
+              <ul class="meta">
+                <li>Puzzle Telemetry</li>
+                <li>Teaching via Space</li>
+                <li>Diegetic Hinting</li>
+              </ul>
+              <div class="actions">
+                <a class="btn sm primary" href="https://example.com/time-spiral" target="_blank" rel="noopener noreferrer">Design Brief</a>
+                <a class="btn sm" href="https://example.com/blockouts" target="_blank" rel="noopener noreferrer">Blockouts</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Systems & Balance: Temporal Engineering -->
+          <article class="card reveal">
+            <div class="card-body">
+              <h3>Temporal Engineering: System Balance</h3>
+              <p>
+                Multiblock reactors with heat &amp; coolant, temporal zones (slow/speed),
+                and Exotic Matter stability. Focus on readable HUD, tuning curves,
+                and failure states that teach the system.
+              </p>
+              <ul class="meta">
+                <li>Economy &amp; Balancing</li>
+                <li>HUD Clarity</li>
+                <li>Onboarding</li>
+              </ul>
+              <div class="actions">
+                <a class="btn sm primary" href="https://example.com/balance" target="_blank" rel="noopener noreferrer">Balance Sheet</a>
+                <a class="btn sm" href="https://example.com/docs" target="_blank" rel="noopener noreferrer">Docs</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Writing -->
+    <section id="writing" class="section reveal">
+      <div class="container">
+        <header class="section-header">
+          <h2>Writing</h2>
+          <p>Poetry, design notes, and essays.</p>
+        </header>
+        <ul class="list">
+          <li>
+            <a href="https://example.com/scp-muse" target="_blank" rel="noopener noreferrer">
+              SCP Concept — <em>The Muse</em> (anomalous beauty, containment, obsession)
+            </a>
+          </li>
+          <li>
+            <a href="https://example.com/poem-on-time" target="_blank" rel="noopener noreferrer">
+              Poem — <em>On Time</em>
+            </a>
+          </li>
+          <li>
+            <a href="https://example.com/unity-audio-manager" target="_blank" rel="noopener noreferrer">
+              Design — <em>Studio‑Grade Audio Manager for Unity</em>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Resume -->
+    <section id="resume" class="section reveal">
+      <div class="container">
+        <header class="section-header">
+          <h2>Resume</h2>
+          <p>Administrative Apprentice • Game Developer • Toolsmith</p>
+        </header>
+        <p>
+          Download a concise resume with selected projects, responsibilities,
+          skills, and links.
+        </p>
+        <p>
+          <a class="btn primary" href="resume.pdf" download>Download PDF</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section alt reveal">
+      <div class="container">
+        <header class="section-header">
+          <h2>Contact</h2>
+          <p>Let’s collaborate or chat about your project.</p>
+        </header>
+        <ul class="contact-list">
+          <li>Email: <a href="mailto:pedro@example.com">pedro@example.com</a></li>
+          <li>GitHub: <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer">github.com/your-username</a></li>
+          <li>Itch.io: <a href="https://itch.io/profile/your-handle" target="_blank" rel="noopener noreferrer">itch.io/profile/your-handle</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener noreferrer">linkedin.com/in/your-handle</a></li>
+          <li>YouTube Devlogs: <a href="https://youtube.com/@yourchannel" target="_blank" rel="noopener noreferrer">@yourchannel</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <small>© <span id="year">2026</span> Pedro Schenegoski • Built with HTML/CSS/JS</small>
+    </div>
+  </footer>
+</body>
+</html>
