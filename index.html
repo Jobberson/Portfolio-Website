@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,20 +7,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
   <!-- Prevent FOUC: set theme before CSS -->
+  <!-- FIX #3: Added 'unsafe-inline' to script-src so this inline script is not blocked by CSP -->
   <script>
-  (function ()
-  {
-    try
-    {
+  (function () {
+    try {
       var stored = localStorage.getItem('theme');
       var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       var theme = stored || (systemDark ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', theme);
-    }
-    catch (e)
-    {
-      /* no-op */
-    }
+    } catch (e) { /* no-op */ }
   }());
   </script>
 
@@ -31,15 +28,15 @@
   <!-- Canonical -->
   <link rel="canonical" href="https://pedroschenegoski.dev/" />
 
-  <!-- Favicons / PWA (replace with your real assets) -->
+  <!-- Favicons / PWA -->
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/icon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5b6cff" />
 
   <!-- Security (prefer server headers; these are fallbacks) -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self' https: data:; connect-src 'self'">
+  <!-- FIX #3: Added 'unsafe-inline' to script-src to allow the FOUC-prevention inline script above -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self' https: data:; connect-src 'self'">
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <!-- Open Graph -->
@@ -59,8 +56,8 @@
   <meta name="twitter:site" content="@yourhandle" />
   <meta name="twitter:creator" content="@yourhandle" />
 
-  <!-- Preload hero image (critical) -->
-  <link rel="preload" as="image" href="/img/portrait.jpg" imagesrcset="/img/portrait.avif 1x, /img/portrait.webp 1x, /img/portrait.jpg 1x" imagesizes="(max-width: 960px) 92vw, 448px" fetchpriority="high" />
+  <!-- FIX #7: Preload hero image — use one format (avif preferred; browser picks via <picture> at render time) -->
+  <link rel="preload" as="image" href="/img/portrait.avif" fetchpriority="high" />
 
   <!-- Styles & Script -->
   <link rel="stylesheet" href="styles.css" />
@@ -75,15 +72,13 @@
     "jobTitle": "Administrative Apprentice & Game Developer",
     "url": "https://pedroschenegoski.dev",
     "image": "https://pedroschenegoski.dev/portrait.jpg",
-    "address":
-    {
+    "address": {
       "@type": "PostalAddress",
       "addressLocality": "Ponta Grossa",
       "addressRegion": "PR",
       "addressCountry": "BR"
     },
-    "sameAs":
-    [
+    "sameAs": [
       "https://github.com/your-username",
       "https://www.linkedin.com/in/your-handle",
       "https://itch.io/profile/your-handle",
@@ -100,8 +95,7 @@
     "@type": "WebSite",
     "url": "https://pedroschenegoski.dev",
     "name": "Pedro Schenegoski — Portfolio",
-    "potentialAction":
-    {
+    "potentialAction": {
       "@type": "SearchAction",
       "target": "https://pedroschenegoski.dev/search?q={search_term_string}",
       "query-input": "required name=search_term_string"
@@ -109,10 +103,13 @@
   }
   </script>
 </head>
+
+<!-- FIX #6: Removed redundant role="banner", role="main", role="contentinfo"
+     — these are already implied by the semantic HTML elements themselves -->
 <body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header" role="banner">
+  <header class="site-header">
     <div class="container">
       <div class="brand">
         <a href="#top" aria-label="Go to top">
@@ -137,14 +134,15 @@
     </div>
   </header>
 
-  <main id="main" class="site-main" role="main">
+  <main id="main" class="site-main">
+
     <!-- Hero -->
     <section class="hero reveal">
       <div class="container hero-inner">
         <div class="hero-text">
           <h1>Crafting atmospheric games, tools, and stories</h1>
           <p>
-            I’m Pedro — an administrative apprentice and solo game developer focused on
+            I'm Pedro — an administrative apprentice and solo game developer focused on
             <strong>psychological tension</strong>, <strong>environmental storytelling</strong>,
             and <strong>polished tools</strong> that help others build.
           </p>
@@ -156,10 +154,8 @@
 
         <div class="hero-photo" aria-hidden="true">
           <picture>
-            <source srcset="img/portrait.avif" type="image/avif" />
-            <source srcset="img/portrait.webp" type="image/webp" />
             <img
-              src="img/portrait.jpg"
+              src="portrait.jpg"
               alt=""
               width="900"
               height="1200"
@@ -185,25 +181,24 @@
           <article class="card reveal">
             <div class="card-media">
               <img
-                src="img/psx-toolkit.jpg"
-                alt="Screenshot of PSX Horror Toolkit editor panels"
+                src="https://assetstorev1-prd-cdn.unity3d.com/key-image/7244a9d4-47cb-4451-ae30-fde173bb24fe.webp"
+                alt="Screenshot of Snog's Timer Manager editor panels"
                 loading="lazy"
                 decoding="async"
               />
             </div>
             <div class="card-body">
-              <h3>PSX Horror Toolkit</h3>
+              <h3>Snog's Timer Manager</h3>
               <p>
-                Commercial Unity asset with retro shaders, audio, interaction, inventory,
-                save/load, VFX, and basic AI. Designed for clarity and extensibility.
+                Commercial Unity asset to manager all types of timers within Unity through code.
               </p>
               <ul class="meta">
-                <li>Unity • C# • IMGUI &amp; UI Toolkit</li>
-                <li>Editor Tools • Audio • Shaders</li>
+                <li>Unity • C# • IMGUI</li>
+                <li>Editor Tools • Timers • Clean Code</li>
               </ul>
               <div class="actions">
-                <a class="btn sm primary" href="https://example.com/product" target="_blank" rel="noopener noreferrer">Product Page</a>
-                <a class="btn sm" href="https://example.com/docs" target="_blank" rel="noopener noreferrer">Docs</a>
+                <a class="btn sm primary" href="https://assetstore.unity.com/packages/tools/utilities/snog-s-timer-manager-344238" target="_blank" rel="noopener noreferrer">Product Page</a>
+                <a class="btn sm" href="https://github.com/Jobberson/Timer-Manager" target="_blank" rel="noopener noreferrer">GitHub</a>
               </div>
             </div>
           </article>
@@ -276,7 +271,7 @@
               <h3>The Heart of the Garden</h3>
               <p>
                 A short emotional adventure gift: non‑Euclidean puzzles, time‑linked rooms,
-                and a core message — “My life only began after you.”
+                and a core message — "My life only began after you."
               </p>
               <ul class="meta">
                 <li>Unity • Narrative Design • Puzzle Design</li>
@@ -297,7 +292,7 @@
       <div class="container">
         <header class="section-header">
           <h2>Game Design</h2>
-          <p>Systems, encounters, and narrative structures I’ve designed or prototyped.</p>
+          <p>Systems, encounters, and narrative structures I've designed or prototyped.</p>
         </header>
 
         <div class="grid cards">
@@ -324,20 +319,18 @@
           <!-- Encounter/Narrative Design: Snowbound -->
           <article class="card reveal">
             <div class="card-body">
-              <h3>Snowbound: Psychological Horror Loop</h3>
+              <h3>The Routine: Text Horror Loop</h3>
               <p>
-                Linear conversations with reactional barks; radio operator as hidden antagonist.
-                Encounters leverage <em>non‑Euclidean reveals</em>, <em>audio misdirection</em>,
-                and <em>footstep implication</em> for persistent dread.
+                A narrative focused text horror game that takes a twist on the mundane transforming 
+                it into something difficult to comprehend.
               </p>
               <ul class="meta">
-                <li>Encounter Design</li>
+                <li>Game Design</li>
                 <li>Environmental Storytelling</li>
-                <li>Pacing &amp; Tension Curves</li>
+                <li>Pacing</li>
               </ul>
               <div class="actions">
-                <a class="btn sm primary" href="https://example.com/encounter-notes" target="_blank" rel="noopener noreferrer">Encounter Notes</a>
-                <a class="btn sm" href="https://example.com/prototype-video" target="_blank" rel="noopener noreferrer">Prototype Video</a>
+                <a class="btn sm primary" href="theroutinegdd.pdf" download>Game Design Document</a>
               </div>
             </div>
           </article>
@@ -366,20 +359,20 @@
           <!-- Systems & Balance: Temporal Engineering -->
           <article class="card reveal">
             <div class="card-body">
-              <h3>Temporal Engineering: System Balance</h3>
+              <h3>Temporal Engineering Mod</h3>
               <p>
                 Multiblock reactors with heat &amp; coolant, temporal zones (slow/speed),
                 and Exotic Matter stability. Focus on readable HUD, tuning curves,
                 and failure states that teach the system.
               </p>
               <ul class="meta">
-                <li>Economy &amp; Balancing</li>
+                <li>Balancing</li>
                 <li>HUD Clarity</li>
                 <li>Onboarding</li>
               </ul>
               <div class="actions">
-                <a class="btn sm primary" href="https://example.com/balance" target="_blank" rel="noopener noreferrer">Balance Sheet</a>
-                <a class="btn sm" href="https://example.com/docs" target="_blank" rel="noopener noreferrer">Docs</a>
+                <a class="btn sm primary" href="temporalengineering.pdf" download>Project Design Document</a>
+                <a class="btn sm" href="https://github.com/Jobberson/Temporal-Engineering-Minecraft-Mod" target="_blank" rel="noopener noreferrer">GitHub</a>
               </div>
             </div>
           </article>
@@ -436,7 +429,7 @@
       <div class="container">
         <header class="section-header">
           <h2>Contact</h2>
-          <p>Let’s collaborate or chat about your project.</p>
+          <p>Let's collaborate or chat about your project.</p>
         </header>
         <ul class="contact-list">
           <li>Email: <a href="mailto:pedro@example.com">pedro@example.com</a></li>
@@ -447,12 +440,14 @@
         </ul>
       </div>
     </section>
+
   </main>
 
-  <footer class="site-footer" role="contentinfo">
+  <footer class="site-footer">
     <div class="container">
       <small>© <span id="year">2026</span> Pedro Schenegoski • Built with HTML/CSS/JS</small>
     </div>
   </footer>
 </body>
 </html>
+

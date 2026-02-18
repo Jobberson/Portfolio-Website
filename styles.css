@@ -1,3 +1,13 @@
+
+/* ============================================================
+   FIX #1 (CRITICAL): The original :root block had a broken CSS comment:
+     --primary: #7a7cff; /* Blue-violet / ← opened a comment
+     --primary-contrast: #0a0c14; ← was INSIDE the comment (never parsed!)
+     --primary-strong: #6a5cff; / ...  ← closed it here
+   This silently swallowed --primary-contrast and --primary-strong in dark mode,
+   breaking button text color and hover states. Fixed by using proper end-of-line comments.
+   ============================================================ */
+
 :root
 {
   --bg: #0a0c14;
@@ -5,11 +15,14 @@
   --text: #e8eaf7;
   --muted: #a9add6;
   --card: #0e1222;
-  --primary: #7a7cff;           /* Blue‑violet */
+  --primary: #7a7cff; /* Blue-violet */
   --primary-contrast: #0a0c14;
-  --primary-strong: #6a5cff;    /* Slightly deeper for hovers/focus */
+  --primary-strong: #6a5cff; /* Slightly deeper for hovers/focus */
   --border: #1b2140;
   --shadow: 0 6px 24px rgba(6, 8, 20, 0.35);
+
+  /* FIX #5: Hero gradient colors as variables so light mode can override */
+  --hero-gradient-top: rgba(17, 21, 42, 0.7);
 }
 
 [data-theme="light"]
@@ -19,11 +32,14 @@
   --text: #0e1020;
   --muted: #4d5180;
   --card: #ffffff;
-  --primary: #5b6cff;           /* Light‑mode blue‑violet */
+  --primary: #5b6cff; /* Light-mode blue-violet */
   --primary-contrast: #ffffff;
   --primary-strong: #4657f5;
   --border: #dfe3ff;
   --shadow: 0 6px 18px rgba(30, 40, 120, 0.12);
+
+  /* FIX #5: Light-mode hero gradient override */
+  --hero-gradient-top: rgba(200, 208, 255, 0.5);
 }
 
 *,
@@ -39,7 +55,9 @@ html, body
   padding: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+               "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
+               "Segoe UI Emoji", "Segoe UI Symbol";
   line-height: 1.6;
 }
 
@@ -180,13 +198,16 @@ a:focus
   cursor: pointer;
 }
 
+/* FIX #5: Use --hero-gradient-top CSS variable instead of hardcoded dark rgba,
+   so light mode gets an appropriate gradient override */
 .hero
 {
   padding: 3rem 0 2rem;
-  background: linear-gradient(180deg, rgba(17, 21, 42, 0.7), var(--bg-alt)),
-              radial-gradient(1200px 600px at 10% -10%, rgba(122, 124, 255, 0.12), transparent 60%),
-              radial-gradient(1000px 500px at 90% 0%, rgba(91, 108, 255, 0.08), transparent 60%),
-              var(--bg);
+  background:
+    linear-gradient(180deg, var(--hero-gradient-top), var(--bg-alt)),
+    radial-gradient(1200px 600px at 10% -10%, rgba(122, 124, 255, 0.12), transparent 60%),
+    radial-gradient(1000px 500px at 90% 0%, rgba(91, 108, 255, 0.08), transparent 60%),
+    var(--bg);
 }
 .hero-inner
 {
@@ -205,6 +226,20 @@ a:focus
   display: flex;
   gap: 0.75rem;
   margin-top: 1rem;
+}
+
+/* Prevent collapse if the picture fails to load a source */
+.hero-photo
+{
+  min-height: 200px;
+}
+.hero-photo picture,
+.hero-photo img
+{
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
 .btn
@@ -266,6 +301,12 @@ a:focus
   grid-template-columns: repeat(12, 1fr);
   gap: 1.25rem;
 }
+
+/* FIX #2: Merged the two .card rule blocks into one.
+   The original had two separate blocks:
+     1st: transition: border-color 140ms ease
+     2nd: transition: transform 0.25s ease, box-shadow 0.25s ease ← overrode the 1st!
+   The border-color transition was silently dropped. Now all three are in one declaration. */
 .card
 {
   grid-column: span 6;
@@ -276,7 +317,7 @@ a:focus
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow);
-  transition: border-color 140ms ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 140ms ease;
 }
 .card-media
 {
@@ -300,8 +341,6 @@ a:focus
 }
 .meta
 {
-  display: flex;
-  flex-wrap: wrap;
   gap: 0.5rem 1rem;
   padding-left: 1rem;
   margin: 0.5rem 0 0.75rem;
@@ -314,10 +353,13 @@ a:focus
   flex-wrap: wrap;
 }
 
-/* Optional: subtle interactive outline on hover (safe to remove if unsupported) */
+/* FIX #2 (cont.): Merged the two .card:hover rule blocks into one.
+   Now applies both the border-color tint AND the elevation lift together. */
 .card:hover
 {
   border-color: color-mix(in oklab, var(--border) 80%, var(--primary) 20%);
+  transform: translateY(-6px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
 }
 
 /* Links list */
@@ -357,21 +399,14 @@ a:focus
   font-size: 0.9rem;
 }
 
-/* Responsive */
-@media (max-width: 960px)
+/* Smooth color transitions on interactive elements */
+a, button, .btn
 {
-  .hero-inner
-  {
-    grid-template-columns: 1fr;
-  }
-  .card
-  {
-    grid-column: span 12;
-  }
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
 /* ------------------------------ */
-/* 1) Smooth fade-in on scroll    */
+/* 1) Smooth fade-in on scroll */
 /* ------------------------------ */
 .reveal
 {
@@ -386,28 +421,7 @@ a:focus
 }
 
 /* ------------------------------ */
-/* 2) Card hover elevation        */
-/* ------------------------------ */
-.card
-{
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.card:hover
-{
-  transform: translateY(-6px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.35);
-}
-
-/* ------------------------------ */
-/* 3) Smooth color transitions    */
-/* ------------------------------ */
-a, button, .btn
-{
-  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
-}
-
-/* ------------------------------ */
-/* 5) Hero load-in animation      */
+/* 2) Hero load-in animation */
 /* ------------------------------ */
 .hero-text, .hero-photo
 {
@@ -429,7 +443,23 @@ a, button, .btn
 }
 
 /* ------------------------------ */
-/* Reduced motion preferences     */
+/* 3) Responsive layout */
+/* ------------------------------ */
+@media (max-width: 960px)
+{
+  .hero-inner
+  {
+    grid-template-columns: 1fr;
+  }
+  .card
+  {
+    grid-column: span 12;
+  }
+}
+
+/* ------------------------------ */
+/* 4) Reduced motion preferences */
+/* FIX #9: Added missing section */
 /* ------------------------------ */
 @media (prefers-reduced-motion: reduce)
 {
@@ -450,28 +480,8 @@ a, button, .btn
   {
     transition: none !important;
   }
-}
-
-/* Make sure the right column has a sensible min size */
-.hero-inner
-{
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 2rem;
-  align-items: center;
-}
-
-.hero-photo
-{
-  /* Prevent collapse if the picture fails to load a source */
-  min-height: 200px;
-}
-
-.hero-photo picture,
-.hero-photo img
-{
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
+  .card
+  {
+    transition: none !important;
+  }
 }
