@@ -321,10 +321,21 @@ a:focus
 }
 .meta
 {
-  gap: 0.5rem 1rem;
-  padding-left: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 0.4rem 0.6rem;
+  padding: 0;
   margin: 0.5rem 0 0.75rem;
   color: var(--muted);
+}
+.meta li
+{
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.8rem;
 }
 .actions
 {
@@ -375,6 +386,13 @@ a:focus
   color: var(--muted);
   background: var(--bg);
   font-size: 0.9rem;
+}
+.site-footer .container
+{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.25rem;
 }
 
 /* Smooth color transitions on interactive elements */
@@ -497,55 +515,110 @@ a, button, .btn
 
 .menu-toggle
 {
-  display: none; /* hidden on desktop by default */
+  display: none; /* hidden on desktop */
   border: 1px solid var(--border);
   background: var(--card);
   color: var(--text);
-  padding: 0.45rem 0.6rem;
+  padding: 0.5rem;
   border-radius: 8px;
   cursor: pointer;
   line-height: 1;
 }
 
+/* CSS hamburger icon — 3 stacked lines */
+.hamburger-icon
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20px;
+  height: 15px;
+  pointer-events: none;
+}
+.hamburger-icon span
+{
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+  transform-origin: center;
+}
+
+/* Animate to × when open */
+.nav-open .hamburger-icon span:nth-child(1)
+{
+  transform: translateY(6.5px) rotate(45deg);
+}
+.nav-open .hamburger-icon span:nth-child(2)
+{
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav-open .hamburger-icon span:nth-child(3)
+{
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
 @media (max-width: 720px)
 {
-  /* Allow brand + controls to wrap into two rows */
+  /* Allow brand + toggle to sit on one row, nav wraps below */
   .site-header .container
   {
     flex-wrap: wrap;
-    row-gap: 0.5rem;
+    row-gap: 0;
   }
 
-  /* Show the hamburger on phones */
+  /* Show the hamburger */
   .menu-toggle
   {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-left: auto; /* pushes the button to the right of brand */
+    margin-left: auto;
   }
 
-  /* Collapse nav by default on small screens */
+  /* Nav: hidden by default, slides in when open */
   #primaryNav
   {
     width: 100%;
-    order: 2;        /* nav below brand/menu button */
-    display: none;   /* collapsed by default */
+    order: 2;
+    /* Use max-height for a smooth slide-down animation */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    border-top: 0px solid var(--border);
   }
 
-  /* When toggled, reveal the nav */
+  /* When open: expand and show separator */
   .nav-open #primaryNav
   {
-    display: block;
+    max-height: 400px; /* tall enough for all items */
+    border-top-width: 1px;
+    padding-bottom: 0.5rem;
   }
 
-  /* Stack nav items vertically for clarity on small screens */
+  /* Force solid header background when menu is open (fixes see-through on scroll) */
+  .nav-open.site-header,
+  .nav-open .site-header
+  {
+    background: var(--bg) !important;
+    backdrop-filter: none !important;
+  }
+
+  /* Stack nav items vertically */
   .nav
   {
-    display: grid;
-    grid-auto-rows: minmax(40px, auto);
-    gap: 0.25rem;
-    padding: 0.25rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.4rem 0;
+  }
+
+  .nav li
+  {
+    display: block;
   }
 
   .nav a,
@@ -553,6 +626,31 @@ a, button, .btn
   {
     width: 100%;
     text-align: left;
-    padding: 0.6rem 0.75rem;
+    padding: 0.65rem 0.75rem;
+    border-radius: 8px;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  /* Give theme/lang buttons a distinct row appearance */
+  .nav .theme-toggle,
+  .nav .lang-toggle
+  {
+    background: var(--bg-alt);
+    border-color: var(--border);
+    text-align: left;
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce)
+{
+  #primaryNav
+  {
+    transition: none !important;
+  }
+  .hamburger-icon span
+  {
+    transition: none !important;
   }
 }

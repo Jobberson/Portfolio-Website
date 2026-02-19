@@ -85,7 +85,11 @@
         aria-expanded="false"
         aria-controls="primaryNav"
       >
-        ☰
+        <span class="hamburger-icon" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
       </button>
 
       <nav id="primaryNav" aria-label="Primary">
@@ -281,7 +285,7 @@
                 <li data-i18n="cards.routine.meta3"></li>
               </ul>
               <div class="actions">
-                <a class="btn sm primary" href="pdfs.theroutinegdd.pdf" download data-i18n="cards.routine.gdd"></a>
+                <a class="btn sm primary" href="pdfs/theroutinegdd.pdf" download data-i18n="cards.routine.gdd"></a>
               </div>
             </div>
           </article>
@@ -364,7 +368,7 @@
           <p data-i18n="sections.contact.subtitle"></p>
         </header>
         <ul class="contact-list">
-          <li><span data-i18n="sections.contact.email_label"></span> <a href="mailto:pschengoski@hotmail.com">pschengoski@hotmail.com</a></li>
+          <li><span data-i18n="sections.contact.email_label"></span> <a href="mailto:your@email.com">your@email.com</a></li>
           <li><span data-i18n="sections.contact.github_label"></span> <a href="https://github.com/Jobberson" target="_blank" rel="noopener noreferrer">github.com/Jobberson</a></li>
           <li><span data-i18n="sections.contact.itch_label"></span> <a href="https://snogg.itch.io/" target="_blank" rel="noopener noreferrer">snogg.itch.io</a></li>
           <li><span data-i18n="sections.contact.linkedin_label"></span> <a href="https://www.linkedin.com/in/pedro-schenegoski-ab0a92258/" target="_blank" rel="noopener noreferrer">linkedin.com/in/pedro-schenegoski</a></li>
@@ -376,7 +380,8 @@
 
   <footer class="site-footer">
     <div class="container">
-      <small>© <span id="year"></span> Pedro Schenegoski • <span data-i18n="footer.built_with"></span></small>
+      <small data-i18n="footer.built_with"></small>
+      <small>© <span id="year"></span> Pedro Schenegoski</small>
     </div>
   </footer>
 </body>
