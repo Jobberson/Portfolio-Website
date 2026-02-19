@@ -6,13 +6,19 @@
 
   <!-- Prevent FOUC: set theme before CSS -->
   <script>
-  (function () {
-    try {
+  (function ()
+  {
+    try
+    {
       var stored = localStorage.getItem('theme');
       var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       var theme = stored || (systemDark ? 'dark' : 'light');
       document.documentElement.setAttribute('data-theme', theme);
-    } catch (e) { /* no-op */ }
+    }
+    catch (e)
+    {
+      /* no-op */
+    }
   }());
   </script>
 
@@ -57,46 +63,6 @@
   <!-- Styles & Script -->
   <link rel="stylesheet" href="styles.css" />
   <script defer src="script.js"></script>
-
-  <!-- JSON-LD: Person -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Pedro Schenegoski",
-    "jobTitle": "Administrative Apprentice & Game Developer",
-    "url": "https://pedroschenegoski.dev",
-    "image": "https://pedroschenegoski.dev/portrait.jpg",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Ponta Grossa",
-      "addressRegion": "PR",
-      "addressCountry": "BR"
-    },
-    "sameAs": [
-      "https://github.com/your-username",
-      "https://www.linkedin.com/in/your-handle",
-      "https://itch.io/profile/your-handle",
-      "https://youtube.com/@yourchannel"
-    ],
-    "knowsAbout": ["Unity", "C#", "Game Design", "Audio Systems", "Tools", "Level Design"]
-  }
-  </script>
-
-  <!-- JSON-LD: WebSite -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "url": "https://pedroschenegoski.dev",
-    "name": "Pedro Schenegoski — Portfolio",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://pedroschenegoski.dev/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
 </head>
 
 <body id="top">
@@ -110,7 +76,19 @@
           <span class="brand-name">Pedro Schenegoski</span>
         </a>
       </div>
-      <nav aria-label="Primary">
+
+      <!-- NEW: Hamburger for mobile -->
+      <button
+        id="menuToggle"
+        class="menu-toggle"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="primaryNav"
+      >
+        ☰
+      </button>
+
+      <nav id="primaryNav" aria-label="Primary">
         <ul class="nav">
           <li><a href="#projects" data-i18n="nav.projects"></a></li>
           <li><a href="#game-design" data-i18n="nav.game_design"></a></li>
@@ -199,7 +177,7 @@
             <div class="card-media">
               <img
                 src="https://img.itch.zone/aW1nLzI0NDQxODM5LnBuZw==/315x250%23c/qVBKF7.png"
-                alt="shooter2d prototype scene"
+                alt="shooter2D prototype scene"
                 loading="lazy"
                 decoding="async"
               />
@@ -217,7 +195,7 @@
             </div>
           </article>
 
-          <!-- SansSheriff -->
+          <!-- Sans Sheriff -->
           <article class="card reveal">
             <div class="card-media">
               <img
@@ -236,7 +214,6 @@
               </ul>
               <div class="actions">
                 <a class="btn sm primary" href="https://snogg.itch.io/sans-sheriff" target="_blank" rel="noopener noreferrer" data-i18n="common.itchio"></a>
-                <a class="btn sm" href="https://example.com/mod" target="_blank" rel="noopener noreferrer" data-i18n="cards.temporal_engineering.page"></a>
               </div>
             </div>
           </article>
@@ -309,7 +286,7 @@
             </div>
           </article>
 
-          <!-- tunnels Galore -->
+          <!-- Tunnels Galore -->
           <article class="card reveal">
             <div class="card-body">
               <h3 data-i18n="cards.tunnels_galore.title"></h3>
@@ -395,7 +372,6 @@
         </ul>
       </div>
     </section>
-
   </main>
 
   <footer class="site-footer">

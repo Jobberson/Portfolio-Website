@@ -81,7 +81,7 @@ function initThemeToggle()
 
 // -----------------------------
 // i18n dictionary
-//  - Use actual HTML tags where formatting is desired (innerHTML will render them).
+//  - You can replace &lt;strong&gt; with <strong> if you want rendered markup.
 // -----------------------------
 const I18N =
 {
@@ -113,8 +113,8 @@ const I18N =
       title: 'Crafting atmospheric and immersive games, tools, and stories',
       subtitle:
         "I'm Pedro — solo game developer and designer focused on " +
-        "<strong>psychological tension</strong>, <strong>environmental storytelling</strong>, " +
-        "and <strong>polished tools</strong> that help others build."
+        "&lt;strong&gt;psychological tension&lt;/strong&gt;, &lt;strong&gt;environmental storytelling&lt;/strong&gt;, " +
+        "and &lt;strong&gt;polished tools&lt;/strong&gt; that help others build."
     },
     cta:
     {
@@ -227,7 +227,7 @@ const I18N =
       {
         title: 'Temporal Engineering Minecraft Mod (1.18.2)',
         desc:
-          'Multiblock reactors with heat &amp; coolant, temporal zones (slow/speed), ' +
+          'Multiblock reactors with heat &amp;amp; coolant, temporal zones (slow/speed), ' +
           'and Exotic Matter stability. Focus on readable HUD, tuning curves, ' +
           'and failure states that teach the system.',
         meta1: 'Balancing',
@@ -239,9 +239,9 @@ const I18N =
     },
     writing:
     {
-      item1: 'Fantasy/Sci-Fi Book — <em>Across the Mirror</em> (Love across worlds, non-euclidean)',
-      item2: 'Poem — <em>On Time</em>',
-      item3: 'Design — <em>Studio-Grade Audio Manager for Unity</em>'
+      item1: 'Fantasy/Sci-Fi Book — &lt;em&gt;Across the Mirror&lt;/em&gt; (Love across worlds, non-euclidean)',
+      item2: 'Poem — &lt;em&gt;On Time&lt;/em&gt;',
+      item3: 'Design — &lt;em&gt;Studio-Grade Audio Manager for Unity&lt;/em&gt;'
     },
     footer:
     {
@@ -277,8 +277,8 @@ const I18N =
       title: 'Criando jogos, ferramentas e histórias atmosféricos e imersivos',
       subtitle:
         'Sou o Pedro — desenvolvedor e designer solo de jogos focado em ' +
-        '<strong>tensão psicológica</strong>, <strong>narrativa ambiental</strong> ' +
-        'e <strong>ferramentas polidas</strong> que ajudam outras pessoas a construir.'
+        '&lt;strong&gt;tensão psicológica&lt;/strong&gt;, &lt;strong&gt;narrativa ambiental&lt;/strong&gt; ' +
+        'e &lt;strong&gt;ferramentas polidas&lt;/strong&gt; que ajudam outras pessoas a construir.'
     },
     cta:
     {
@@ -392,7 +392,7 @@ const I18N =
       {
         title: 'Mod de Minecraft Temporal Engineering (1.18.2)',
         desc:
-          'Reatores multibloco com calor &amp; resfriamento, zonas temporais (lento/rápido) ' +
+          'Reatores multibloco com calor &amp;amp; resfriamento, zonas temporais (lento/rápido) ' +
           'e estabilidade de Matéria Exótica. Foco em HUD legível, curvas de ajuste ' +
           'e estados de falha que ensinam o sistema.',
         meta1: 'Balanceamento',
@@ -404,9 +404,9 @@ const I18N =
     },
     writing:
     {
-      item1: 'Livro Fantasia/Sci-Fi — <em>Across the Mirror</em> (Amor entre mundos, não-euclidiano)',
-      item2: 'Poema — <em>Sobre o Tempo</em>',
-      item3: 'Design — <em>Audio Manager de nível de estúdio para Unity</em>'
+      item1: 'Livro Fantasia/Sci-Fi — &lt;em&gt;Across the Mirror&lt;/em&gt; (Amor entre mundos, não-euclidiano)',
+      item2: 'Poema — &lt;em&gt;Sobre o Tempo&lt;/em&gt;',
+      item3: 'Design — &lt;em&gt;Audio Manager de nível de estúdio para Unity&lt;/em&gt;'
     },
     footer:
     {
@@ -623,6 +623,51 @@ function hardenExternalLinks()
 }
 
 // -----------------------------
+// Mobile menu (hamburger) toggle
+// -----------------------------
+function initMenuToggle()
+{
+  const btn = $('#menuToggle');
+  const nav = $('#primaryNav');
+
+  if (!btn || !nav)
+  {
+    return;
+  }
+
+  btn.addEventListener('click', () =>
+  {
+    const isOpen = document.body.classList.toggle('nav-open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  });
+
+  // Close the menu when a link is clicked
+  nav.addEventListener('click', (e) =>
+  {
+    const t = e.target;
+    if (t && t.tagName === 'A')
+    {
+      document.body.classList.remove('nav-open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', 'Open menu');
+    }
+  });
+
+  // Optional: close on Escape
+  document.addEventListener('keydown', (e) =>
+  {
+    if (e.key === 'Escape' && document.body.classList.contains('nav-open'))
+    {
+      document.body.classList.remove('nav-open');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', 'Open menu');
+      btn.focus();
+    }
+  });
+}
+
+// -----------------------------
 // Language toggle init
 // -----------------------------
 function initLanguage()
@@ -654,6 +699,7 @@ document.addEventListener('DOMContentLoaded', () =>
   initYear();
   initThemeToggle();
   initLanguage();
+  initMenuToggle();       // <-- hamburger
   initRevealOnScroll();
   initHeaderOnScroll();
   initActiveNav();

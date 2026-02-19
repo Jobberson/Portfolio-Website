@@ -25,8 +25,7 @@
   --primary-strong: #4657f5;
   --border: #dfe3ff;
   --shadow: 0 6px 18px rgba(30, 40, 120, 0.12);
-
-  /* FIX #5: Light-mode hero gradient override */
+  /* Light-mode hero gradient override */
   --hero-gradient-top: rgba(200, 208, 255, 0.5);
 }
 
@@ -490,4 +489,70 @@ a, button, .btn
 {
   font-size: 0.875rem;
   padding: 0.4rem 0.6rem;
+}
+
+/* ----------------------------- */
+/* HAMBURGER (mobile)            */
+/* ----------------------------- */
+
+.menu-toggle
+{
+  display: none; /* hidden on desktop by default */
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+@media (max-width: 720px)
+{
+  /* Allow brand + controls to wrap into two rows */
+  .site-header .container
+  {
+    flex-wrap: wrap;
+    row-gap: 0.5rem;
+  }
+
+  /* Show the hamburger on phones */
+  .menu-toggle
+  {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto; /* pushes the button to the right of brand */
+  }
+
+  /* Collapse nav by default on small screens */
+  #primaryNav
+  {
+    width: 100%;
+    order: 2;        /* nav below brand/menu button */
+    display: none;   /* collapsed by default */
+  }
+
+  /* When toggled, reveal the nav */
+  .nav-open #primaryNav
+  {
+    display: block;
+  }
+
+  /* Stack nav items vertically for clarity on small screens */
+  .nav
+  {
+    display: grid;
+    grid-auto-rows: minmax(40px, auto);
+    gap: 0.25rem;
+    padding: 0.25rem 0;
+  }
+
+  .nav a,
+  .nav button
+  {
+    width: 100%;
+    text-align: left;
+    padding: 0.6rem 0.75rem;
+  }
 }
