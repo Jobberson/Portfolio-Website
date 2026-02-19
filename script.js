@@ -112,7 +112,7 @@ const I18N =
     {
       title: 'Crafting atmospheric and immersive games, tools, and stories',
       subtitle:
-        "I'm Pedro — an administrative apprentice and solo game developer focused on " +
+        "I'm Pedro — solo game developer and designer focused on " +
         "<strong>psychological tension</strong>, <strong>environmental storytelling</strong>, " +
         "and <strong>polished tools</strong> that help others build."
     },
@@ -141,7 +141,7 @@ const I18N =
       resume:
       {
         title: 'Resume',
-        subtitle: 'Administrative Apprentice • Game Developer and Designer • Unity Toolsmith',
+        subtitle: 'Game Developer and Designer • Unity Toolsmith',
         download_blurb:
           'Download a concise resume with selected projects, responsibilities, skills, and links.',
         download_btn: 'Download PDF'
@@ -154,7 +154,7 @@ const I18N =
         github_label: 'GitHub:',
         itch_label: 'Itch.io:',
         linkedin_label: 'LinkedIn:',
-        youtube_label: 'YouTube Devlogs:'
+        asset_store_label: 'Unity Asset Store:'
       }
     },
     cards:
@@ -279,7 +279,7 @@ const I18N =
     {
       title: 'Criando jogos, ferramentas e histórias atmosféricos e imersivos',
       subtitle:
-        'Sou o Pedro — aprendiz administrativo e desenvolvedor solo de jogos focado em ' +
+        'Sou o Pedro — desenvolvedor e designer solo de jogos focado em ' +
         '<strong>tensão psicológica</strong>, <strong>narrativa ambiental</strong> ' +
         'e <strong>ferramentas polidas</strong> que ajudam outras pessoas a construir.'
     },
@@ -308,7 +308,7 @@ const I18N =
       resume:
       {
         title: 'Currículo',
-        subtitle: 'Aprendiz Administrativo • Desenvolvedor e Designer de Jogos • Ferramenteiro Unity',
+        subtitle: 'Desenvolvedor e Designer de Jogos • Ferramenteiro Unity',
         download_blurb:
           'Baixe um currículo conciso com projetos selecionados, responsabilidades, habilidades e links.',
         download_btn: 'Baixar PDF'
@@ -321,7 +321,7 @@ const I18N =
         github_label: 'GitHub:',
         itch_label: 'Itch.io:',
         linkedin_label: 'LinkedIn:',
-        youtube_label: 'Devlogs no YouTube:'
+        asset_store_label: 'Unity Asset Store:'
       }
     },
     cards:
