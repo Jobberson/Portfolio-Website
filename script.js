@@ -213,18 +213,15 @@ const I18N =
         meta3: 'Pacing',
         gdd: 'Game Design Document'
       },
-      time_spiral:
+      tunnels_galore:
       {
-        title: 'Time Spiral: Loop-Breaking Puzzle',
+        title: 'Tunnels Galore Project',
         desc:
-          'PT-style two-room loop where forward motion teleports the player invisibly until they ' +
-          'choose to go back, breaking the cycle. Teaches <strong>pattern recognition</strong> ' +
-          'and rewards <strong>contrarian thinking</strong>.',
-        meta1: 'Puzzle Telemetry',
-        meta2: 'Teaching via Space',
-        meta3: 'Diegetic Hinting',
-        brief: 'Design Brief',
-        blockouts: 'Blockouts'
+          'A psychological horror game in the tunnels of Paranapiacaba, full of anomalies ' +
+          'thick Silent Hill-like fog and weird things amongst your normal work as a patrol guard',
+        meta1: 'Psychological Horror',
+        meta2: 'Enemies Logic',
+        gdd: 'Game Design Document',
       },
       temporal_mod:
       {
@@ -378,20 +375,18 @@ const I18N =
         meta1: 'Game Design',
         meta2: 'Narrativa Ambiental',
         meta3: 'Ritmo',
-        gdd: 'Game Design Document'
+        gdd: 'Documento de Game Design'
       },
-      time_spiral:
+      tunnels_galore:
       {
-        title: 'Time Spiral: Puzzle de Quebra de Loop',
+        title: 'Tunnels Galore Project',
         desc:
-          'Loop de duas salas ao estilo PT, onde ir para a frente teleporta o jogador ' +
-          'invisivelmente até decidir voltar, quebrando o ciclo. Ensina <strong>reconhecimento de padrões</strong> ' +
-          'e recompensa o <strong>pensamento contrário</strong>.',
-        meta1: 'Telemetria de Puzzles',
-        meta2: 'Ensino via Espaço',
-        meta3: 'Dicas Diegéticas',
-        brief: 'Brief de Design',
-        blockouts: 'Blockouts'
+          'Um jogo de terror psicológico nos túneis funiculares de paranapiacaba, cheio de anomalias, ' +
+          'uma névoa espessa como em Silent Hill e coisas estranhas no meio do seu trabalho normal ' +
+          'como um guarda noturno dos túneis',
+        meta1: 'Terror psicológico',
+        meta2: 'Lógica de inimigos',
+        gdd: 'Documento de Game Design',
       },
       temporal_mod:
       {
