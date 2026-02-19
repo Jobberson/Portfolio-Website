@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
   <!-- Prevent FOUC: set theme before CSS -->
-  <!-- FIX #3: Added 'unsafe-inline' to script-src so this inline script is not blocked by CSP -->
   <script>
   (function () {
     try {
@@ -35,7 +32,6 @@
   <link rel="manifest" href="/site.webmanifest" />
 
   <!-- Security (prefer server headers; these are fallbacks) -->
-  <!-- FIX #3: Added 'unsafe-inline' to script-src to allow the FOUC-prevention inline script above -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self' https: data:; connect-src 'self'">
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
@@ -56,7 +52,6 @@
   <meta name="twitter:site" content="@yourhandle" />
   <meta name="twitter:creator" content="@yourhandle" />
 
-  <!-- FIX #7: Preload hero image — use one format (avif preferred; browser picks via <picture> at render time) -->
   <link rel="preload" as="image" href="/img/portrait.avif" fetchpriority="high" />
 
   <!-- Styles & Script -->
@@ -104,10 +99,8 @@
   </script>
 </head>
 
-<!-- FIX #6: Removed redundant role="banner", role="main", role="contentinfo"
-     — these are already implied by the semantic HTML elements themselves -->
 <body id="top">
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#main" data-i18n="common.skip_to_content"></a>
 
   <header class="site-header">
     <div class="container">
@@ -119,14 +112,19 @@
       </div>
       <nav aria-label="Primary">
         <ul class="nav">
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#game-design">Game Design</a></li>
-          <li><a href="#writing">Writing</a></li>
-          <li><a href="#resume">Resume</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#projects" data-i18n="nav.projects"></a></li>
+          <li><a href="#game-design" data-i18n="nav.game_design"></a></li>
+          <li><a href="#writing" data-i18n="nav.writing"></a></li>
+          <li><a href="#resume" data-i18n="nav.resume"></a></li>
+          <li><a href="#contact" data-i18n="nav.contact"></a></li>
           <li>
             <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme" aria-pressed="false">
               <span aria-hidden="true">🌓</span>
+            </button>
+          </li>
+          <li>
+            <button id="langToggle" class="lang-toggle" aria-label="Switch language" aria-pressed="false">
+              <span id="langLabel" aria-hidden="true">PT</span>
             </button>
           </li>
         </ul>
@@ -135,27 +133,22 @@
   </header>
 
   <main id="main" class="site-main">
-
     <!-- Hero -->
     <section class="hero reveal">
       <div class="container hero-inner">
         <div class="hero-text">
-          <h1>Crafting atmospheric games, tools, and stories</h1>
-          <p>
-            I'm Pedro — an administrative apprentice and solo game developer focused on
-            <strong>psychological tension</strong>, <strong>environmental storytelling</strong>,
-            and <strong>polished tools</strong> that help others build.
-          </p>
+          <h1 data-i18n="hero.title"></h1>
+          <p data-i18n="hero.subtitle"></p>
           <p class="hero-cta">
-            <a class="btn primary" href="#projects">See my work</a>
-            <a class="btn secondary" href="#contact">Get in touch</a>
+            <a class="btn primary" href="#projects" data-i18n="cta.see_work"></a>
+            <a class="btn secondary" href="#contact" data-i18n="cta.get_in_touch"></a>
           </p>
         </div>
 
-        <div class="hero-photo" aria-hidden="true">
+        <div class="hero-photo">
           <picture>
             <img
-              src="portrait.jpg"
+              src="img/portrait.jpg"
               alt=""
               width="900"
               height="1200"
@@ -172,12 +165,12 @@
     <section id="projects" class="section reveal">
       <div class="container">
         <header class="section-header">
-          <h2>Projects</h2>
-          <p>Highlights from my Unity tooling, prototypes, and modding work.</p>
+          <h2 data-i18n="sections.projects.title"></h2>
+          <p data-i18n="sections.projects.subtitle"></p>
         </header>
 
         <div class="grid cards">
-          <!-- PSX Horror Toolkit -->
+          <!-- Timer Manager -->
           <article class="card reveal">
             <div class="card-media">
               <img
@@ -188,71 +181,62 @@
               />
             </div>
             <div class="card-body">
-              <h3>Snog's Timer Manager</h3>
-              <p>
-                Commercial Unity asset to manager all types of timers within Unity through code.
-              </p>
+              <h3 data-i18n="cards.timer_manager.title"></h3>
+              <p data-i18n="cards.timer_manager.desc"></p>
               <ul class="meta">
-                <li>Unity • C# • IMGUI</li>
-                <li>Editor Tools • Timers • Clean Code</li>
+                <li data-i18n="cards.timer_manager.meta1"></li>
+                <li data-i18n="cards.timer_manager.meta2"></li>
               </ul>
               <div class="actions">
-                <a class="btn sm primary" href="https://assetstore.unity.com/packages/tools/utilities/snog-s-timer-manager-344238" target="_blank" rel="noopener noreferrer">Product Page</a>
-                <a class="btn sm" href="https://github.com/Jobberson/Timer-Manager" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="btn sm primary" href="https://assetstore.unity.com/packages/tools/utilities/snog-s-timer-manager-344238" target="_blank" rel="noopener noreferrer" data-i18n="common.product_page">Product Page</a>
+                <a class="btn sm" href="https://github.com/Jobberson/Timer-Manager" target="_blank" rel="noopener noreferrer" data-i18n="common.github">GitHub</a>
               </div>
             </div>
           </article>
 
-          <!-- Psychological Horror Prototype -->
+          <!-- 2D platformer shooter -->
           <article class="card reveal">
             <div class="card-media">
               <img
-                src="img/snow-research-site.jpg"
-                alt="Snowbound prototype scene"
+                src="https://img.itch.zone/aW1nLzI0NDQxODM5LnBuZw==/315x250%23c/qVBKF7.png"
+                alt="shooter2d prototype scene"
                 loading="lazy"
                 decoding="async"
               />
             </div>
             <div class="card-body">
-              <h3>Snowbound — Psychological Horror Prototype</h3>
-              <p>
-                30–60 min experience set in a remote snowy research site. Linear conversations,
-                reactional dialogue, and an alien twist hiding in the radio.
-              </p>
+              <h3 data-i18n="cards.shooter2d.title"></h3>
+              <p data-i18n="cards.shooter2d.desc"></p>
               <ul class="meta">
-                <li>Exploration • Audio • Environmental Storytelling</li>
-                <li>Hallucinations • Non‑Euclidean Moments</li>
+                <li data-i18n="cards.shooter2d.meta1"></li>
+                <li data-i18n="cards.shooter2d.meta2"></li>
               </ul>
               <div class="actions">
-                <a class="btn sm primary" href="https://example.com/demo" target="_blank" rel="noopener noreferrer">Demo / Trailer</a>
-                <a class="btn sm" href="https://example.com/design" target="_blank" rel="noopener noreferrer">Design Notes</a>
+                <a class="btn sm primary" href="https://snogg.itch.io/2d-shooter-mvp" target="_blank" rel="noopener noreferrer" data-i18n="common.itchio"></a>
               </div>
             </div>
           </article>
 
-          <!-- Temporal Engineering (Minecraft mod) -->
+          <!-- SansSheriff -->
           <article class="card reveal">
             <div class="card-media">
               <img
-                src="img/temporal-engineering.jpg"
-                alt="Temporal Engineering mod artwork"
+                src="https://img.itch.zone/aW1nLzE4ODk3NDQzLnBuZw==/315x250%23c/EkuOyR.png"
+                alt="Sans Sheriff artwork"
                 loading="lazy"
                 decoding="async"
               />
             </div>
             <div class="card-body">
-              <h3>Temporal Engineering (Forge 1.18.2)</h3>
-              <p>
-                Modular multiblocks with Heat &amp; Coolant systems, Exotic Matter tiers, temporal
-                fields (slow/speed zones), and polished UX for status &amp; stability.
-              </p>
+              <h3 data-i18n="cards.sans_sheriff.title"></h3>
+              <p data-i18n="cards.sans_sheriff.desc"></p>
               <ul class="meta">
-                <li>Java • Forge • Systems Design</li>
-                <li>UI/UX • Balancing • Documentation</li>
+                <li data-i18n="cards.sans_sheriff.meta1"></li>
+                <li data-i18n="cards.sans_sheriff.meta2"></li>
               </ul>
               <div class="actions">
-                <a class="btn sm primary" href="https://github.com/your-username/temporal-engineering" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a class="btn sm" href="https://example.com/mod" target="_blank" rel="noopener noreferrer">Mod Page</a>
+                <a class="btn sm primary" href="https://snogg.itch.io/sans-sheriff" target="_blank" rel="noopener noreferrer" data-i18n="common.itchio"></a>
+                <a class="btn sm" href="https://example.com/mod" target="_blank" rel="noopener noreferrer" data-i18n="cards.temporal_engineering.page"></a>
               </div>
             </div>
           </article>
@@ -261,25 +245,21 @@
           <article class="card reveal">
             <div class="card-media">
               <img
-                src="img/heart-of-the-garden.jpg"
+                src="img/heart-of-the-garden.png"
                 alt="Scene from The Heart of the Garden"
                 loading="lazy"
                 decoding="async"
               />
             </div>
             <div class="card-body">
-              <h3>The Heart of the Garden</h3>
-              <p>
-                A short emotional adventure gift: non‑Euclidean puzzles, time‑linked rooms,
-                and a core message — "My life only began after you."
-              </p>
+              <h3 data-i18n="cards.heart_garden.title"></h3>
+              <p data-i18n="cards.heart_garden.desc"></p>
               <ul class="meta">
-                <li>Unity • Narrative Design • Puzzle Design</li>
-                <li>Visual Metaphors • Atmosphere</li>
+                <li data-i18n="cards.heart_garden.meta1"></li>
+                <li data-i18n="cards.heart_garden.meta2"></li>
               </ul>
               <div class="actions">
-                <a class="btn sm primary" href="https://itch.io" target="_blank" rel="noopener noreferrer">itch.io</a>
-                <a class="btn sm" href="https://example.com/devlog" target="_blank" rel="noopener noreferrer">Devlog</a>
+                <a class="btn sm primary" href="https://itch.io" target="_blank" rel="noopener noreferrer" data-i18n="common.itchio"></a>
               </div>
             </div>
           </article>
@@ -291,46 +271,40 @@
     <section id="game-design" class="section alt reveal">
       <div class="container">
         <header class="section-header">
-          <h2>Game Design</h2>
-          <p>Systems, encounters, and narrative structures I've designed or prototyped.</p>
+          <h2 data-i18n="sections.game_design.title"></h2>
+          <p data-i18n="sections.game_design.subtitle"></p>
         </header>
 
         <div class="grid cards">
           <!-- System Design: Audio Manager -->
           <article class="card reveal">
             <div class="card-body">
-              <h3>Studio‑Grade Audio Manager (Unity)</h3>
-              <p>
-                Event‑driven triggers, mixer snapshots, priority handling for overlapping sounds,
-                zones with reverb and blending, and editor tooling for quick iteration.
-              </p>
+              <h3 data-i18n="cards.audio_manager.title"></h3>
+              <p data-i18n="cards.audio_manager.desc"></p>
               <ul class="meta">
-                <li>Systems Design</li>
-                <li>UX for Tools</li>
-                <li>Iteration Pipelines</li>
+                <li data-i18n="cards.audio_manager.meta1"></li>
+                <li data-i18n="cards.audio_manager.meta2"></li>
+                <li data-i18n="cards.audio_manager.meta3"></li>
               </ul>
               <div class="actions">
-                <a class="btn sm primary" href="https://example.com/audiodoc" target="_blank" rel="noopener noreferrer">Design Doc</a>
-                <a class="btn sm" href="https://github.com/your-username/audio-manager" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="btn sm primary" href="https://example.com/audiodoc" target="_blank" rel="noopener noreferrer" data-i18n="common.design_doc"></a>
+                <a class="btn sm" href="https://github.com/your-username/audio-manager" target="_blank" rel="noopener noreferrer" data-i18n="common.github"></a>
               </div>
             </div>
           </article>
 
-          <!-- Encounter/Narrative Design: Snowbound -->
+          <!-- Encounter/Narrative Design: The Routine -->
           <article class="card reveal">
             <div class="card-body">
-              <h3>The Routine: Text Horror Loop</h3>
-              <p>
-                A narrative focused text horror game that takes a twist on the mundane transforming 
-                it into something difficult to comprehend.
-              </p>
+              <h3 data-i18n="cards.routine.title"></h3>
+              <p data-i18n="cards.routine.desc"></p>
               <ul class="meta">
-                <li>Game Design</li>
-                <li>Environmental Storytelling</li>
-                <li>Pacing</li>
+                <li data-i18n="cards.routine.meta1"></li>
+                <li data-i18n="cards.routine.meta2"></li>
+                <li data-i18n="cards.routine.meta3"></li>
               </ul>
               <div class="actions">
-                <a class="btn sm primary" href="theroutinegdd.pdf" download>Game Design Document</a>
+                <a class="btn sm primary" href="pdfs.theroutinegdd.pdf" download data-i18n="cards.routine.gdd"></a>
               </div>
             </div>
           </article>
@@ -338,20 +312,16 @@
           <!-- Puzzle Design: Time Spiral -->
           <article class="card reveal">
             <div class="card-body">
-              <h3>Time Spiral: Loop‑Breaking Puzzle</h3>
-              <p>
-                PT‑style two‑room loop where forward motion teleports the player invisibly until they
-                choose to go back, breaking the cycle. Teaches <strong>pattern recognition</strong>
-                and rewards <strong>contrarian thinking</strong>.
-              </p>
+              <h3 data-i18n="cards.time_spiral.title"></h3>
+              <p data-i18n="cards.time_spiral.desc"></p>
               <ul class="meta">
-                <li>Puzzle Telemetry</li>
-                <li>Teaching via Space</li>
-                <li>Diegetic Hinting</li>
+                <li data-i18n="cards.time_spiral.meta1"></li>
+                <li data-i18n="cards.time_spiral.meta2"></li>
+                <li data-i18n="cards.time_spiral.meta3"></li>
               </ul>
               <div class="actions">
-                <a class="btn sm primary" href="https://example.com/time-spiral" target="_blank" rel="noopener noreferrer">Design Brief</a>
-                <a class="btn sm" href="https://example.com/blockouts" target="_blank" rel="noopener noreferrer">Blockouts</a>
+                <a class="btn sm primary" href="https://example.com/time-spiral" target="_blank" rel="noopener noreferrer" data-i18n="cards.time_spiral.brief"></a>
+                <a class="btn sm" href="https://example.com/blockouts" target="_blank" rel="noopener noreferrer" data-i18n="cards.time_spiral.blockouts"></a>
               </div>
             </div>
           </article>
@@ -359,20 +329,16 @@
           <!-- Systems & Balance: Temporal Engineering -->
           <article class="card reveal">
             <div class="card-body">
-              <h3>Temporal Engineering Mod</h3>
-              <p>
-                Multiblock reactors with heat &amp; coolant, temporal zones (slow/speed),
-                and Exotic Matter stability. Focus on readable HUD, tuning curves,
-                and failure states that teach the system.
-              </p>
+              <h3 data-i18n="cards.temporal_mod.title"></h3>
+              <p data-i18n="cards.temporal_mod.desc"></p>
               <ul class="meta">
-                <li>Balancing</li>
-                <li>HUD Clarity</li>
-                <li>Onboarding</li>
+                <li data-i18n="cards.temporal_mod.meta1"></li>
+                <li data-i18n="cards.temporal_mod.meta2"></li>
+                <li data-i18n="cards.temporal_mod.meta3"></li>
               </ul>
               <div class="actions">
-                <a class="btn sm primary" href="temporalengineering.pdf" download>Project Design Document</a>
-                <a class="btn sm" href="https://github.com/Jobberson/Temporal-Engineering-Minecraft-Mod" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a class="btn sm primary" href="pdfs/temporalengineering.pdf" download data-i18n="cards.temporal_mod.doc"></a>
+                <a class="btn sm" href="https://github.com/Jobberson/Temporal-Engineering-Minecraft-Mod" target="_blank" rel="noopener noreferrer" data-i18n="common.github"></a>
               </div>
             </div>
           </article>
@@ -384,24 +350,18 @@
     <section id="writing" class="section reveal">
       <div class="container">
         <header class="section-header">
-          <h2>Writing</h2>
-          <p>Poetry, design notes, and essays.</p>
+          <h2 data-i18n="sections.writing.title"></h2>
+          <p data-i18n="sections.writing.subtitle"></p>
         </header>
         <ul class="list">
           <li>
-            <a href="https://example.com/scp-muse" target="_blank" rel="noopener noreferrer">
-              SCP Concept — <em>The Muse</em> (anomalous beauty, containment, obsession)
-            </a>
+            <a href="https://example.com/scp-muse" target="_blank" rel="noopener noreferrer" data-i18n="writing.item1"></a>
           </li>
           <li>
-            <a href="https://example.com/poem-on-time" target="_blank" rel="noopener noreferrer">
-              Poem — <em>On Time</em>
-            </a>
+            <a href="https://example.com/poem-on-time" target="_blank" rel="noopener noreferrer" data-i18n="writing.item2"></a>
           </li>
           <li>
-            <a href="https://example.com/unity-audio-manager" target="_blank" rel="noopener noreferrer">
-              Design — <em>Studio‑Grade Audio Manager for Unity</em>
-            </a>
+            <a href="https://example.com/unity-audio-manager" target="_blank" rel="noopener noreferrer" data-i18n="writing.item3"></a>
           </li>
         </ul>
       </div>
@@ -411,15 +371,12 @@
     <section id="resume" class="section reveal">
       <div class="container">
         <header class="section-header">
-          <h2>Resume</h2>
-          <p>Administrative Apprentice • Game Developer • Toolsmith</p>
+          <h2 data-i18n="sections.resume.title"></h2>
+          <p data-i18n="sections.resume.subtitle"></p>
         </header>
+        <p data-i18n="sections.resume.download_blurb"></p>
         <p>
-          Download a concise resume with selected projects, responsibilities,
-          skills, and links.
-        </p>
-        <p>
-          <a class="btn primary" href="resume.pdf" download>Download PDF</a>
+          <a id="resumeBtn" class="btn primary" href="pdfs/resume.pdf" download data-i18n="sections.resume.download_btn"></a>
         </p>
       </div>
     </section>
@@ -428,15 +385,16 @@
     <section id="contact" class="section alt reveal">
       <div class="container">
         <header class="section-header">
-          <h2>Contact</h2>
-          <p>Let's collaborate or chat about your project.</p>
+          <h2 data-i18n="sections.contact.title"></h2>
+          <p data-i18n="sections.contact.subtitle"></p>
         </header>
         <ul class="contact-list">
-          <li>Email: <a href="mailto:pedro@example.com">pedro@example.com</a></li>
-          <li>GitHub: <a href="https://github.com/your-username" target="_blank" rel="noopener noreferrer">github.com/your-username</a></li>
-          <li>Itch.io: <a href="https://itch.io/profile/your-handle" target="_blank" rel="noopener noreferrer">itch.io/profile/your-handle</a></li>
-          <li>LinkedIn: <a href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener noreferrer">linkedin.com/in/your-handle</a></li>
-          <li>YouTube Devlogs: <a href="https://youtube.com/@yourchannel" target="_blank" rel="noopener noreferrer">@yourchannel</a></li>
+          <li><span data-i18n="sections.contact.email_label"></span> <a href="mailto:pschengoski@hotmail.com">pschengoski@hotmail.com</a></li>
+          <li><span data-i18n="sections.contact.github_label"></span> <a href="https://github.com/Jobberson" target="_blank" rel="noopener noreferrer">github.com/Jobberson</a></li>
+          <li><span data-i18n="sections.contact.itch_label"></span> <a href="https://snogg.itch.io/" target="_blank" rel="noopener noreferrer">snogg.itch.io</a></li>
+          <li><span data-i18n="sections.contact.linkedin_label"></span> <a href="https://www.linkedin.com/in/pedro-schenegoski-ab0a92258/" target="_blank" rel="noopener noreferrer">linkedin.com/in/pedro-schenegoski
+          </a></li>
+          <li><span data-i18n="sections.contact.youtube_label"></span> <a href="https://youtube.com/@yourchannel" target="_blank" rel="noopener noreferrer">@yourchannel</a></li>
         </ul>
       </div>
     </section>
@@ -445,9 +403,8 @@
 
   <footer class="site-footer">
     <div class="container">
-      <small>© <span id="year">2026</span> Pedro Schenegoski • Built with HTML/CSS/JS</small>
+      <small>© <span id="year"></span> Pedro Schenegoski • <span data-i18n="footer.built_with"></span></small>
     </div>
   </footer>
 </body>
 </html>
-
