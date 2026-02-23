@@ -81,7 +81,7 @@ function initThemeToggle()
 
 // -----------------------------
 // i18n dictionary
-//  - You can replace <strong> with <strong> if you want rendered markup.
+//  - You can replace &lt;strong&gt; with <strong> if you want rendered markup.
 // -----------------------------
 const I18N =
 {
@@ -113,8 +113,8 @@ const I18N =
       title: 'Crafting atmospheric and immersive games, tools, and stories',
       subtitle:
         "I'm Pedro — solo game developer and designer focused on " +
-        "<strong>psychological tension</strong>, <strong>environmental storytelling</strong>, " +
-        "and <strong>polished tools</strong> that help others build."
+        "&lt;strong&gt;psychological tension&lt;/strong&gt;, &lt;strong&gt;environmental storytelling&lt;/strong&gt;, " +
+        "and &lt;strong&gt;polished tools&lt;/strong&gt; that help others build."
     },
     cta:
     {
@@ -136,7 +136,7 @@ const I18N =
       writing:
       {
         title: 'Writing',
-        subtitle: 'design notes and more.'
+        subtitle: 'Design notes and more.'
       },
       resume:
       {
@@ -144,7 +144,7 @@ const I18N =
         subtitle: 'Game Developer and Designer • Unity Toolsmith',
         download_blurb:
           'Download a concise resume with selected projects, responsibilities, skills, and links.',
-        download_btn: 'Download PDF'
+        download_btn: 'See Resume'
       },
       contact:
       {
@@ -162,7 +162,7 @@ const I18N =
       timer_manager:
       {
         title: "Snog's Timer Manager",
-        desc: 'Commercial Unity asset to manager all types of timers within Unity through code.',
+        desc: 'Commercial Unity asset to manage all types of timers within Unity through code.',
         meta1: 'Unity • C# • IMGUI',
         meta2: 'Editor Tools • Timers • Clean Code'
       },
@@ -227,7 +227,7 @@ const I18N =
       {
         title: 'Temporal Engineering Minecraft Mod (1.18.2)',
         desc:
-          'Multiblock reactors with heat &amp; coolant, temporal zones (slow/speed), ' +
+          'Multiblock reactors with heat &amp;amp; coolant, temporal zones (slow/speed), ' +
           'and Exotic Matter stability. Focus on readable HUD, tuning curves, ' +
           'and failure states that teach the system.',
         meta1: 'Balancing',
@@ -239,13 +239,7 @@ const I18N =
     },
     writing:
     {
-      item1: 'Fantasy/Sci-Fi Book — <em>Across the Mirror</em> (Love across worlds, non-euclidean)',
-      item2: 'Poem — <em>On Time</em>',
-      item3: 'Design — <em>Studio-Grade Audio Manager for Unity</em>'
-    },
-    footer:
-    {
-      built_with: 'Built with HTML/CSS/JS'
+      item1: 'Fantasy/Sci-Fi Book — Across the Mirror (Love across worlds, non-euclidean)',
     }
   },
 
@@ -277,8 +271,8 @@ const I18N =
       title: 'Criando jogos, ferramentas e histórias atmosféricos e imersivos',
       subtitle:
         'Sou o Pedro — desenvolvedor e designer solo de jogos focado em ' +
-        '<strong>tensão psicológica</strong>, <strong>narrativa ambiental</strong> ' +
-        'e <strong>ferramentas polidas</strong> que ajudam outras pessoas a construir.'
+        '&lt;strong&gt;tensão psicológica&lt;/strong&gt;, &lt;strong&gt;narrativa ambiental&lt;/strong&gt; ' +
+        'e &lt;strong&gt;ferramentas polidas&lt;/strong&gt; que ajudam outras pessoas a construir.'
     },
     cta:
     {
@@ -300,7 +294,7 @@ const I18N =
       writing:
       {
         title: 'Escrita',
-        subtitle: 'notas de design e mais.'
+        subtitle: 'Notas de design e mais.'
       },
       resume:
       {
@@ -308,7 +302,7 @@ const I18N =
         subtitle: 'Desenvolvedor e Designer de Jogos • Ferramenteiro Unity',
         download_blurb:
           'Baixe um currículo conciso com projetos selecionados, responsabilidades, habilidades e links.',
-        download_btn: 'Baixar PDF'
+        download_btn: 'Ver Currículo'
       },
       contact:
       {
@@ -381,7 +375,7 @@ const I18N =
       {
         title: 'Tunnels Galore Project',
         desc:
-          'Um jogo de terror psicológico nos túneis funiculares de paranapiacaba, cheio de anomalias, ' +
+          'Um jogo de terror psicológico nos túneis funiculares de Paranapiacaba, cheio de anomalias, ' +
           'uma névoa espessa como em Silent Hill e coisas estranhas no meio do seu trabalho normal ' +
           'como um guarda noturno dos túneis',
         meta1: 'Terror psicológico',
@@ -404,13 +398,7 @@ const I18N =
     },
     writing:
     {
-      item1: 'Livro Fantasia/Sci-Fi — <em>Across the Mirror</em> (Amor entre mundos, não-euclidiano)',
-      item2: 'Poema — <em>Sobre o Tempo</em>',
-      item3: 'Design — <em>Audio Manager de nível de estúdio para Unity</em>'
-    },
-    footer:
-    {
-      built_with: 'Feito com HTML/CSS/JS'
+      item1: 'Livro Fantasia/Sci-Fi — Across the Mirror (Amor entre mundos, não-euclidiano)',
     }
   }
 };
@@ -629,20 +617,23 @@ function initMenuToggle()
 {
   const btn = $('#menuToggle');
   const nav = $('#primaryNav');
-
   if (!btn || !nav)
   {
     return;
   }
+  const firstLink = nav.querySelector('a');
 
   btn.addEventListener('click', () =>
   {
     const isOpen = document.body.classList.toggle('nav-open');
     btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     btn.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    if (isOpen && firstLink)
+    {
+      firstLink.focus();
+    }
   });
 
-  // Close the menu when a link is clicked
   nav.addEventListener('click', (e) =>
   {
     const t = e.target;
@@ -651,10 +642,10 @@ function initMenuToggle()
       document.body.classList.remove('nav-open');
       btn.setAttribute('aria-expanded', 'false');
       btn.setAttribute('aria-label', 'Open menu');
+      btn.focus();
     }
   });
 
-  // Optional: close on Escape
   document.addEventListener('keydown', (e) =>
   {
     if (e.key === 'Escape' && document.body.classList.contains('nav-open'))
@@ -670,17 +661,33 @@ function initMenuToggle()
 // -----------------------------
 // Language toggle init
 // -----------------------------
+function detectLang()
+{
+  try
+  {
+    const saved = localStorage.getItem('lang');
+    if (saved === 'pt' || saved === 'en')
+    {
+      return saved;
+    }
+  }
+  catch (e)
+  {
+    // no-op
+  }
+  const nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+  return nav.startsWith('pt') ? 'pt' : 'en';
+}
+
 function initLanguage()
 {
-  const current = getSavedLang();
+  const current = detectLang();
   setLang(current);
   applyTranslations(current);
-
   const btn = $('#langToggle');
   if (btn)
   {
     btn.setAttribute('aria-pressed', current === 'pt' ? 'true' : 'false');
-
     btn.addEventListener('click', () =>
     {
       const next = (getSavedLang() === 'en') ? 'pt' : 'en';
@@ -699,7 +706,7 @@ document.addEventListener('DOMContentLoaded', () =>
   initYear();
   initThemeToggle();
   initLanguage();
-  initMenuToggle();       // <-- hamburger
+  initMenuToggle();
   initRevealOnScroll();
   initHeaderOnScroll();
   initActiveNav();

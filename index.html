@@ -4,8 +4,15 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-  <!-- Prevent FOUC: set theme before CSS -->
-  <script>
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; img-src 'self' https: data:;
+                style-src 'self';
+                script-src 'self' 'nonce-r4nd0m';
+                font-src 'self' https: data:;
+                connect-src 'self';
+                object-src 'none'; base-uri 'self'; frame-ancestors 'none'">
+
+  <script nonce="r4nd0m">
   (function ()
   {
     try
@@ -22,43 +29,43 @@
   }());
   </script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Pedro Schenegoski",
+    "url": "https://jobberson.github.io/Portfolio-Website/",
+    "jobTitle": "Game Developer & Unity Toolsmith",
+    "sameAs": [
+      "https://github.com/Jobberson",
+      "https://snogg.itch.io/",
+      "https://www.linkedin.com/in/pedro-schenegoski-ab0a92258/"
+    ]
+  }
+  </script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pedro Schenegoski — Portfolio</title>
-  <meta name="description" content="Portfolio of Pedro Schenegoski — administrative apprentice and game developer creating atmospheric experiences, tools, and mods." />
+  <meta name="description" content="Portfolio of Pedro Schenegoski — game designer and developer creating atmospheric experiences, tools, and mods." />
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0c14" />
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f8ff" />
 
   <!-- Canonical -->
-  <link rel="canonical" href="https://pedroschenegoski.dev/" />
+  <link rel="canonical" href="https://jobberson.github.io/Portfolio-Website/" />
 
   <!-- Favicons / PWA -->
-  <link rel="icon" href="/favicon.ico" sizes="any" />
-  <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-
-  <!-- Security (prefer server headers; these are fallbacks) -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' https: data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self' https: data:; connect-src 'self'">
-  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <link rel="icon" href="img/favicon.png" sizes="any" />
+  <link rel="apple-touch-icon" href="img/favicon.png" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Pedro Schenegoski — Portfolio" />
   <meta property="og:description" content="Game dev, tools, and atmospheric experiences." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://pedroschenegoski.dev/" />
-  <meta property="og:image" content="https://pedroschenegoski.dev/og-image.jpg" />
+  <meta property="og:url" content="https://jobberson.github.io/Portfolio-Website/" />
   <meta property="og:site_name" content="Pedro Schenegoski" />
   <meta property="og:locale" content="en_US" />
 
-  <!-- Twitter/X -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Pedro Schenegoski — Portfolio" />
-  <meta name="twitter:description" content="Game dev, tools, and atmospheric experiences." />
-  <meta name="twitter:image" content="https://pedroschenegoski.dev/og-image.jpg" />
-  <meta name="twitter:site" content="@yourhandle" />
-  <meta name="twitter:creator" content="@yourhandle" />
-
-  <link rel="preload" as="image" href="/img/portrait.avif" fetchpriority="high" />
+  <link rel="preload" as="image" href="/img/portrait.jpg" fetchpriority="high" />
 
   <!-- Styles & Script -->
   <link rel="stylesheet" href="styles.css" />
@@ -85,11 +92,7 @@
         aria-expanded="false"
         aria-controls="primaryNav"
       >
-        <span class="hamburger-icon" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
+        ☰
       </button>
 
       <nav id="primaryNav" aria-label="Primary">
@@ -129,9 +132,10 @@
 
         <div class="hero-photo">
           <picture>
+            <source srcset="img/portrait.jpg" type="image/jpg" />
             <img
               src="img/portrait.jpg"
-              alt=""
+              alt="Pedro Schenegoski — game developer and toolsmith"
               width="900"
               height="1200"
               decoding="async"
@@ -240,7 +244,7 @@
                 <li data-i18n="cards.heart_garden.meta2"></li>
               </ul>
               <div class="actions">
-                <a class="btn sm primary" href="https://itch.io" target="_blank" rel="noopener noreferrer" data-i18n="common.itchio"></a>
+                <a class="btn sm primary disabled" href="https://itch.io" target="_blank" rel="noopener noreferrer" data-i18n="common.itchio"></a>
               </div>
             </div>
           </article>
@@ -268,8 +272,7 @@
                 <li data-i18n="cards.audio_manager.meta3"></li>
               </ul>
               <div class="actions">
-                <a class="btn sm primary" href="https://example.com/audiodoc" target="_blank" rel="noopener noreferrer" data-i18n="common.design_doc"></a>
-                <a class="btn sm" href="https://github.com/your-username/audio-manager" target="_blank" rel="noopener noreferrer" data-i18n="common.github"></a>
+                <a class="btn sm primary" href="https://github.com/Jobberson/Audio-Manager" target="_blank" rel="noopener noreferrer" data-i18n="common.github"></a>
               </div>
             </div>
           </article>
@@ -285,7 +288,7 @@
                 <li data-i18n="cards.routine.meta3"></li>
               </ul>
               <div class="actions">
-                <a class="btn sm primary" href="pdfs/theroutinegdd.pdf" download data-i18n="cards.routine.gdd"></a>
+                <a class="btn sm primary" href="pdfs/theroutinegdd.pdf" data-i18n="cards.routine.gdd"></a>
               </div>
             </div>
           </article>
@@ -300,7 +303,7 @@
                 <li data-i18n="cards.tunnels_galore.meta2"></li>
               </ul>
               <div class="actions">
-                <a class="btn sm primary" href="pdfs/tunnelsgaloregdd.pdf" target="_blank" rel="noopener noreferrer" data-i18n="cards.tunnels_galore.gdd"></a>
+                <a class="btn sm primary" href="pdfs/tunnelsgaloregdd.pdf" data-i18n="cards.tunnels_galore.gdd"></a>
               </div>
             </div>
           </article>
@@ -316,7 +319,7 @@
                 <li data-i18n="cards.temporal_mod.meta3"></li>
               </ul>
               <div class="actions">
-                <a class="btn sm primary" href="pdfs/temporalengineering.pdf" download data-i18n="cards.temporal_mod.doc"></a>
+                <a class="btn sm primary" href="pdfs/temporalengineering.pdf" data-i18n="cards.temporal_mod.doc"></a>
                 <a class="btn sm" href="https://github.com/Jobberson/Temporal-Engineering-Minecraft-Mod" target="_blank" rel="noopener noreferrer" data-i18n="common.github"></a>
               </div>
             </div>
@@ -334,13 +337,7 @@
         </header>
         <ul class="list">
           <li>
-            <a href="https://example.com/scp-muse" target="_blank" rel="noopener noreferrer" data-i18n="writing.item1"></a>
-          </li>
-          <li>
-            <a href="https://example.com/poem-on-time" target="_blank" rel="noopener noreferrer" data-i18n="writing.item2"></a>
-          </li>
-          <li>
-            <a href="https://example.com/unity-audio-manager" target="_blank" rel="noopener noreferrer" data-i18n="writing.item3"></a>
+            <a href="pdfs/acrossthemirror.pdf" data-i18n="writing.item1"></a>
           </li>
         </ul>
       </div>
@@ -368,11 +365,11 @@
           <p data-i18n="sections.contact.subtitle"></p>
         </header>
         <ul class="contact-list">
-          <li><span data-i18n="sections.contact.email_label"></span> <a href="mailto:pschenegoski@hotmail.com">pschenegoski@hotmail.com</a></li>
-          <li><span data-i18n="sections.contact.github_label"></span> <a href="https://github.com/Jobberson" target="_blank" rel="noopener noreferrer">github.com/Jobberson</a></li>
-          <li><span data-i18n="sections.contact.itch_label"></span> <a href="https://snogg.itch.io/" target="_blank" rel="noopener noreferrer">snogg.itch.io</a></li>
-          <li><span data-i18n="sections.contact.linkedin_label"></span> <a href="https://www.linkedin.com/in/pedro-schenegoski-ab0a92258/" target="_blank" rel="noopener noreferrer">linkedin.com/in/pedro-schenegoski</a></li>
-          <li><span data-i18n="sections.contact.asset_store_label"></span> <a href="https://assetstore.unity.com/publishers/116963" target="_blank" rel="noopener noreferrer">assetstore.unity.com/publishers/116963</a></li>
+          <li><span data-i18n="sections.contact.email_label"></span> <a href="mailto:pschengoski@hotmail.com">pschengoski@hotmail.com</a></li>
+          <li><span data-i18n="sections.contact.github_label"></span> <a href="https://github.com/Jobberson" target="_blank" rel="noopener noreferrer me">github.com/Jobberson</a></li>
+          <li><span data-i18n="sections.contact.itch_label"></span> <a href="https://snogg.itch.io/" target="_blank" rel="noopener noreferrer me">snogg.itch.io</a></li>
+          <li><span data-i18n="sections.contact.linkedin_label"></span> <a href="https://www.linkedin.com/in/pedro-schenegoski-ab0a92258/" target="_blank" rel="noopener noreferrer me">linkedin.com/in/pedro-schenegoski</a></li>
+          <li><span data-i18n="sections.contact.asset_store_label"></span> <a href="https://assetstore.unity.com/publishers/116963" target="_blank" rel="noopener noreferrer me">assetstore.unity.com/publishers/116963</a></li>
         </ul>
       </div>
     </section>
@@ -380,8 +377,7 @@
 
   <footer class="site-footer">
     <div class="container">
-      <small data-i18n="footer.built_with"></small>
-      <small>© <span id="year"></span> Pedro Schenegoski</small>
+      <small>© <span id="year"></span> Pedro Schenegoski </small>
     </div>
   </footer>
 </body>
