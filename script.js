@@ -113,8 +113,8 @@ const I18N =
       title: 'Crafting atmospheric and immersive games, tools, and stories',
       subtitle:
         "I'm Pedro — solo game developer and designer focused on " +
-        "&lt;strong&gt;psychological tension&lt;/strong&gt;, &lt;strong&gt;environmental storytelling&lt;/strong&gt;, " +
-        "and &lt;strong&gt;polished tools&lt;/strong&gt; that help others build."
+        "psychological tension, environmental storytelling, " +
+        "and polished tools that help others build."
     },
     cta:
     {
@@ -271,8 +271,8 @@ const I18N =
       title: 'Criando jogos, ferramentas e histórias atmosféricos e imersivos',
       subtitle:
         'Sou o Pedro — desenvolvedor e designer solo de jogos focado em ' +
-        '&lt;strong&gt;tensão psicológica&lt;/strong&gt;, &lt;strong&gt;narrativa ambiental&lt;/strong&gt; ' +
-        'e &lt;strong&gt;ferramentas polidas&lt;/strong&gt; que ajudam outras pessoas a construir.'
+        'tensão psicológica, narrativa ambiental ' +
+        'e ferramentas polidas que ajudam outras pessoas a construir.'
     },
     cta:
     {
