@@ -1,384 +1,335 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
-  <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; img-src 'self' https: data:;
-                style-src 'self';
-                script-src 'self' 'nonce-r4nd0m';
-                font-src 'self' https: data:;
-                connect-src 'self';
-                object-src 'none'; base-uri 'self'; frame-ancestors 'none'">
-
-  <script nonce="r4nd0m">
-  (function ()
-  {
-    try
-    {
-      var stored = localStorage.getItem('theme');
-      var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var theme = stored || (systemDark ? 'dark' : 'light');
-      document.documentElement.setAttribute('data-theme', theme);
-    }
-    catch (e)
-    {
-      /* no-op */
-    }
-  }());
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Pedro Schenegoski",
-    "url": "https://jobberson.github.io/Portfolio-Website/",
-    "jobTitle": "Game Developer & Unity Toolsmith",
-    "sameAs": [
-      "https://github.com/Jobberson",
-      "https://snogg.itch.io/",
-      "https://www.linkedin.com/in/pedro-schenegoski-ab0a92258/"
-    ]
-  }
-  </script>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pedro Schenegoski — Portfolio</title>
-  <meta name="description" content="Portfolio of Pedro Schenegoski — game designer and developer creating atmospheric experiences, tools, and mods." />
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0c14" />
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f7f8ff" />
-
-  <!-- Canonical -->
-  <link rel="canonical" href="https://jobberson.github.io/Portfolio-Website/" />
-
-  <!-- Favicons / PWA -->
-  <link rel="icon" href="img/favicon.png" sizes="any" />
-  <link rel="apple-touch-icon" href="img/favicon.png" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Pedro Schenegoski — Portfolio" />
-  <meta property="og:description" content="Game dev, tools, and atmospheric experiences." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://jobberson.github.io/Portfolio-Website/" />
-  <meta property="og:site_name" content="Pedro Schenegoski" />
-  <meta property="og:locale" content="en_US" />
-
-  <link rel="preload" as="image" href="/img/portrait.jpg" fetchpriority="high" />
-
-  <!-- Styles & Script -->
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
-</head>
-
-<body id="top">
-  <a class="skip-link" href="#main" data-i18n="common.skip_to_content"></a>
-
-  <header class="site-header">
-    <div class="container">
-      <div class="brand">
-        <a href="#top" aria-label="Go to top">
-          <span class="logo">PS</span>
-          <span class="brand-name">Pedro Schenegoski</span>
-        </a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' https: data:; style-src 'self'; object-src 'none'; base-uri 'self'"
+    />
+    <title>Pedro Schenegoski | Game and narrative designer</title>
+    <meta
+      name="description"
+      content="Pedro Schenegoski designs games: environmental storytelling, atmospheric games, and the Unity tools to prototype them."
+    />
+    <meta name="theme-color" content="#0a0c14" />
+    <link rel="canonical" href="https://pedroschenegoski.com/" />
+    <link rel="icon" href="img/favicon.png" />
+    <meta
+      property="og:title"
+      content="Pedro Schenegoski | Game and narrative designer"
+    />
+    <meta
+      property="og:description"
+      content="Atmospheric games, design documents, and Unity tools."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://pedroschenegoski.com/" />
+    <meta
+      property="og:image"
+      content="https://pedroschenegoski.com/img/og.jpg"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:locale" content="en_US" />
+    <link rel="alternate" hreflang="en" href="https://pedroschenegoski.com/" />
+    <link
+      rel="alternate"
+      hreflang="pt-BR"
+      href="https://pedroschenegoski.com/pt/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://pedroschenegoski.com/"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Pedro Schenegoski",
+        "jobTitle": "Game and narrative designer",
+        "url": "https://pedroschenegoski.com/",
+        "sameAs": [
+          "https://github.com/Jobberson",
+          "https://snogg.itch.io/",
+          "https://www.linkedin.com/in/pedro-schenegoski-ab0a92258/"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="top">
+      <div class="wrap">
+        <a class="brand" href="#top">Pedro Schenegoski</a>
+        <nav aria-label="Primary">
+          <a href="#work">Work</a><a href="#tools">Tools and writing</a>
+          <a href="#about">About</a><a href="#contact">Contact</a>
+          <a class="lang" href="pt/index.html" hreflang="pt-BR" lang="pt-BR"
+            >Português</a
+          >
+        </nav>
       </div>
+    </header>
 
-      <!-- NEW: Hamburger for mobile -->
-      <button
-        id="menuToggle"
-        class="menu-toggle"
-        aria-label="Open menu"
-        aria-expanded="false"
-        aria-controls="primaryNav"
-      >
-        ☰
-      </button>
-
-      <nav id="primaryNav" aria-label="Primary">
-        <ul class="nav">
-          <li><a href="#projects" data-i18n="nav.projects"></a></li>
-          <li><a href="#game-design" data-i18n="nav.game_design"></a></li>
-          <li><a href="#writing" data-i18n="nav.writing"></a></li>
-          <li><a href="#resume" data-i18n="nav.resume"></a></li>
-          <li><a href="#contact" data-i18n="nav.contact"></a></li>
-          <li>
-            <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme" aria-pressed="false">
-              <span aria-hidden="true">🌓</span>
-            </button>
-          </li>
-          <li>
-            <button id="langToggle" class="lang-toggle" aria-label="Switch language" aria-pressed="false">
-              <span id="langLabel" aria-hidden="true">PT</span>
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main" class="site-main">
-    <!-- Hero -->
-    <section class="hero reveal">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <h1 data-i18n="hero.title"></h1>
-          <p data-i18n="hero.subtitle"></p>
-          <p class="hero-cta">
-            <a class="btn primary" href="#projects" data-i18n="cta.see_work"></a>
-            <a class="btn secondary" href="#contact" data-i18n="cta.get_in_touch"></a>
+    <main id="main">
+      <div class="hero" id="top">
+        <div class="wrap">
+          <h1>Stories you walk through</h1>
+          <p>
+            I'm Pedro, a game and narrative designer. I make games built on
+            immersive gameplay and environmental storytelling, and I build the
+            Unity tools I design with.
           </p>
-        </div>
-
-        <div class="hero-photo">
-          <picture>
-            <source srcset="img/portrait.jpg" type="image/jpg" />
-            <img
-              src="img/portrait.jpg"
-              alt="Pedro Schenegoski — game developer and toolsmith"
-              width="900"
-              height="1200"
-              decoding="async"
-              fetchpriority="high"
-              sizes="(max-width: 960px) 92vw, 448px"
-            />
-          </picture>
+          <p class="proof">
+            Game designer at Knock Up Game Studio, published Unity Asset Store
+            tools, horror and narrative prototypes, and a Shadows of Doubt mod.
+          </p>
+          <div class="cta">
+            <a class="btn main" href="#work">See the work</a
+            ><a class="btn" href="pdfs/resume.pdf">Read my resume</a>
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- Projects -->
-    <section id="projects" class="section reveal">
-      <div class="container">
-        <header class="section-header">
-          <h2 data-i18n="sections.projects.title"></h2>
-          <p data-i18n="sections.projects.subtitle"></p>
-        </header>
-
-        <div class="grid cards">
-          <!-- Timer Manager -->
-          <article class="card reveal">
-            <div class="card-media">
-              <img
-                src="https://assetstorev1-prd-cdn.unity3d.com/key-image/7244a9d4-47cb-4451-ae30-fde173bb24fe.webp"
-                alt="Screenshot of Snog's Timer Manager editor panels"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <div class="card-body">
-              <h3 data-i18n="cards.timer_manager.title"></h3>
-              <p data-i18n="cards.timer_manager.desc"></p>
-              <ul class="meta">
-                <li data-i18n="cards.timer_manager.meta1"></li>
-                <li data-i18n="cards.timer_manager.meta2"></li>
-              </ul>
-              <div class="actions">
-                <a class="btn sm primary" href="https://assetstore.unity.com/packages/tools/utilities/snog-s-timer-manager-344238" target="_blank" rel="noopener noreferrer" data-i18n="common.product_page">Product Page</a>
-                <a class="btn sm" href="https://github.com/Jobberson/Timer-Manager" target="_blank" rel="noopener noreferrer" data-i18n="common.github">GitHub</a>
+      <section id="work">
+        <div class="wrap">
+          <h2>Selected work</h2>
+          <div class="work">
+            <a class="case lead" href="rogue-dungeons.html">
+              <div class="shot draft">Screenshot coming</div>
+              <div>
+                <h3>Rogue Dungeons Project</h3>
+                <p>
+                  A 4-player local co-op dungeon crawler set in a city that is
+                  one giant machine. I designed its world, gameplay systems,
+                  co-op balance and identity. The game is currently in
+                  development at Knock Up Game Studio, and I am the lead
+                  designer.
+                </p>
+                <p class="tags">
+                  Systems and narrative design, co-op balance, dungeon crawler,
+                  GDD
+                </p>
               </div>
-            </div>
-          </article>
-
-          <!-- 2D platformer shooter -->
-          <article class="card reveal">
-            <div class="card-media">
-              <img
-                src="https://img.itch.zone/aW1nLzI0NDQxODM5LnBuZw==/315x250%23c/qVBKF7.png"
-                alt="shooter2D prototype scene"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <div class="card-body">
-              <h3 data-i18n="cards.shooter2d.title"></h3>
-              <p data-i18n="cards.shooter2d.desc"></p>
-              <ul class="meta">
-                <li data-i18n="cards.shooter2d.meta1"></li>
-                <li data-i18n="cards.shooter2d.meta2"></li>
-              </ul>
-              <div class="actions">
-                <a class="btn sm primary" href="https://snogg.itch.io/2d-shooter-mvp" target="_blank" rel="noopener noreferrer" data-i18n="common.itchio"></a>
+            </a>
+            <a class="case" href="you-stayed.html">
+              <div class="shot">
+                <img
+                  src="img/youStayed-card.png"
+                  width="960"
+                  height="445"
+                  alt="A desk with a lit lamp and a computer showing green terminal text, under the title You Stayed"
+                  loading="lazy"
+                />
               </div>
-            </div>
-          </article>
-
-          <!-- Sans Sheriff -->
-          <article class="card reveal">
-            <div class="card-media">
-              <img
-                src="https://img.itch.zone/aW1nLzE4ODk3NDQzLnBuZw==/315x250%23c/EkuOyR.png"
-                alt="Sans Sheriff artwork"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <div class="card-body">
-              <h3 data-i18n="cards.sans_sheriff.title"></h3>
-              <p data-i18n="cards.sans_sheriff.desc"></p>
-              <ul class="meta">
-                <li data-i18n="cards.sans_sheriff.meta1"></li>
-                <li data-i18n="cards.sans_sheriff.meta2"></li>
-              </ul>
-              <div class="actions">
-                <a class="btn sm primary" href="https://snogg.itch.io/sans-sheriff" target="_blank" rel="noopener noreferrer" data-i18n="common.itchio"></a>
+              <h3>You Stayed</h3>
+              <p class="tags">
+                Psychological horror, text adventure, environmental storytelling
+              </p>
+            </a>
+            <a class="case" href="heart-of-the-garden.html">
+              <div class="shot">
+                <img
+                  src="img/tHotG-card.png"
+                  width="960"
+                  height="445"
+                  alt="A tree trunk with a lamp and a bench on a grassy hill above a bank of fog, under the title The Heart of the Garden"
+                  loading="lazy"
+                />
               </div>
-            </div>
-          </article>
-
-          <!-- The Heart of the Garden -->
-          <article class="card reveal">
-            <div class="card-media">
-              <img
-                src="img/heart-of-the-garden.png"
-                alt="Scene from The Heart of the Garden"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <div class="card-body">
-              <h3 data-i18n="cards.heart_garden.title"></h3>
-              <p data-i18n="cards.heart_garden.desc"></p>
-              <ul class="meta">
-                <li data-i18n="cards.heart_garden.meta1"></li>
-                <li data-i18n="cards.heart_garden.meta2"></li>
-              </ul>
-              <div class="actions">
-                <a class="btn sm primary disabled" href="https://itch.io" target="_blank" rel="noopener noreferrer" data-i18n="common.itchio"></a>
-              </div>
-            </div>
-          </article>
+              <h3>The Heart of the Garden</h3>
+              <p class="tags">
+                Narrative design, non-Euclidean puzzles, visual metaphor
+              </p>
+            </a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Game Design -->
-    <section id="game-design" class="section alt reveal">
-      <div class="container">
-        <header class="section-header">
-          <h2 data-i18n="sections.game_design.title"></h2>
-          <p data-i18n="sections.game_design.subtitle"></p>
-        </header>
-
-        <div class="grid cards">
-          <!-- System Design: Audio Manager -->
-          <article class="card reveal">
-            <div class="card-body">
-              <h3 data-i18n="cards.audio_manager.title"></h3>
-              <p data-i18n="cards.audio_manager.desc"></p>
-              <ul class="meta">
-                <li data-i18n="cards.audio_manager.meta1"></li>
-                <li data-i18n="cards.audio_manager.meta2"></li>
-                <li data-i18n="cards.audio_manager.meta3"></li>
-              </ul>
-              <div class="actions">
-                <a class="btn sm primary" href="https://github.com/Jobberson/Audio-Manager" target="_blank" rel="noopener noreferrer" data-i18n="common.github"></a>
+      <section class="fog" id="tools">
+        <div class="wrap">
+          <h2>Tools, systems, writing and other projects</h2>
+          <ul class="rows">
+            <li>
+              <div>
+                <h3>Timer Manager for Unity</h3>
+                <p>
+                  A commercial Unity asset for managing every kind of timer
+                  through code.
+                </p>
               </div>
-            </div>
-          </article>
-
-          <!-- The Routine -->
-          <article class="card reveal">
-            <div class="card-body">
-              <h3 data-i18n="cards.routine.title"></h3>
-              <p data-i18n="cards.routine.desc"></p>
-              <ul class="meta">
-                <li data-i18n="cards.routine.meta1"></li>
-                <li data-i18n="cards.routine.meta2"></li>
-                <li data-i18n="cards.routine.meta3"></li>
-              </ul>
-              <div class="actions">
-                <a class="btn sm primary" href="pdfs/theroutinegdd.pdf" data-i18n="cards.routine.gdd"></a>
+              <div class="links">
+                <a
+                  href="https://assetstore.unity.com/packages/tools/utilities/snog-s-timer-manager-344238"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Asset Store</a
+                ><a
+                  href="https://github.com/Jobberson/Timer-Manager"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
               </div>
-            </div>
-          </article>
-
-          <!-- Tunnels Galore -->
-          <article class="card reveal">
-            <div class="card-body">
-              <h3 data-i18n="cards.tunnels_galore.title"></h3>
-              <p data-i18n="cards.tunnels_galore.desc"></p>
-              <ul class="meta">
-                <li data-i18n="cards.tunnels_galore.meta1"></li>
-                <li data-i18n="cards.tunnels_galore.meta2"></li>
-              </ul>
-              <div class="actions">
-                <a class="btn sm primary" href="pdfs/tunnelsgaloregdd.pdf" data-i18n="cards.tunnels_galore.gdd"></a>
+            </li>
+            <li>
+              <div>
+                <h3>Audio Manager for Unity</h3>
+                <p>
+                  A commercial Unity asset for managing audio in games.
+                  Event-driven triggers, mixer snapshots, priority for
+                  overlapping sounds, and reverb zones with editor tooling.
+                </p>
               </div>
-            </div>
-          </article>
-
-          <!-- Temporal Engineering -->
-          <article class="card reveal">
-            <div class="card-body">
-              <h3 data-i18n="cards.temporal_mod.title"></h3>
-              <p data-i18n="cards.temporal_mod.desc"></p>
-              <ul class="meta">
-                <li data-i18n="cards.temporal_mod.meta1"></li>
-                <li data-i18n="cards.temporal_mod.meta2"></li>
-                <li data-i18n="cards.temporal_mod.meta3"></li>
-              </ul>
-              <div class="actions">
-                <a class="btn sm primary" href="pdfs/temporalengineering.pdf" data-i18n="cards.temporal_mod.doc"></a>
-                <a class="btn sm" href="https://github.com/Jobberson/Temporal-Engineering-Minecraft-Mod" target="_blank" rel="noopener noreferrer" data-i18n="common.github"></a>
+              <div class="links">
+                <a
+                  href="https://assetstore.unity.com/packages/package/343636"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Asset Store</a
+                >
               </div>
-            </div>
-          </article>
+            </li>
+            <li>
+              <div>
+                <h3>Shadows of Doubt Expanded Mod</h3>
+                <p>
+                  A mod for Shadows of Doubt that adds new mechanics for killers
+                  in the game.
+                </p>
+              </div>
+              <div class="links">
+                <a
+                  href="https://thunderstore.io/c/shadows-of-doubt/p/SnogGames/ShadowsOfDoubtExpanded/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Thunderstore</a
+                >
+                <a
+                  href="https://github.com/Jobberson/Shadows-Of-Doubt-Expanded"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >GitHub</a
+                >
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>2D Shooter MVP</h3>
+                <p>
+                  An MVP for a 2D shooter inspired by Vampire Survivors, made
+                  with Unity.
+                </p>
+              </div>
+              <div class="links">
+                <a
+                  href="https://snogg.itch.io/2d-shooter-mvp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >itch.io</a
+                >
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>Across the Mirror</h3>
+                <p>
+                  A fantasy and sci-fi book about love across worlds and
+                  non-Euclidean space.
+                </p>
+              </div>
+              <div class="links">
+                <a
+                  href="pdfs/acrossthemirror.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Read the PDF</a
+                >
+              </div>
+            </li>
+          </ul>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Writing -->
-    <section id="writing" class="section reveal">
-      <div class="container">
-        <header class="section-header">
-          <h2 data-i18n="sections.writing.title"></h2>
-          <p data-i18n="sections.writing.subtitle"></p>
-        </header>
-        <ul class="list">
-          <li>
-            <a href="pdfs/acrossthemirror.pdf" data-i18n="writing.item1"></a>
-          </li>
-        </ul>
-      </div>
-    </section>
+      <section id="about">
+        <div class="wrap about">
+          <img
+            src="img/portrait.jpg"
+            width="200"
+            height="267"
+            alt="Pedro Schenegoski"
+            loading="lazy"
+          />
+          <div>
+            <h2>About</h2>
+            <p>
+              I'm a game designer and developer from Ponta Grossa, Brazil. I
+              make games that stay in players' minds, that are both satisfying
+              to play and rich in lore. I write C# in Unity so I can prototype
+              my own ideas, and I publish the tools I build along the way.
+            </p>
+            <p>
+              Epic Games Game Design Professional certificate (Coursera, 2025).
+            </p>
+            <p>English fluent, Portuguese native.</p>
+          </div>
+        </div>
+      </section>
 
-    <!-- Resume -->
-    <section id="resume" class="section reveal">
-      <div class="container">
-        <header class="section-header">
-          <h2 data-i18n="sections.resume.title"></h2>
-          <p data-i18n="sections.resume.subtitle"></p>
-        </header>
-        <p data-i18n="sections.resume.download_blurb"></p>
-        <p>
-          <a id="resumeBtn" class="btn primary" href="pdfs/resume.pdf" download data-i18n="sections.resume.download_btn"></a>
-        </p>
-      </div>
-    </section>
+      <section class="fog" id="contact">
+        <div class="wrap">
+          <h2>Contact</h2>
+          <p>Open to collaborations and studio roles.</p>
+          <ul class="contact">
+            <li>
+              <span>Email</span>
+              <a href="mailto:pedro@pedroschenegoski.com"
+                >pedro@pedroschenegoski.com</a
+              >
+            </li>
+            <li>
+              <span>LinkedIn</span>
+              <a
+                href="https://www.linkedin.com/in/pedro-schenegoski-ab0a92258/"
+                target="_blank"
+                rel="noopener noreferrer me"
+                >pedro-schenegoski</a
+              >
+            </li>
+            <li>
+              <span>itch.io</span>
+              <a
+                href="https://snogg.itch.io/"
+                target="_blank"
+                rel="noopener noreferrer me"
+                >snogg.itch.io</a
+              >
+            </li>
+            <li>
+              <span>GitHub</span>
+              <a
+                href="https://github.com/Jobberson"
+                target="_blank"
+                rel="noopener noreferrer me"
+                >Jobberson</a
+              >
+            </li>
+            <li>
+              <span>Asset Store</span>
+              <a
+                href="https://assetstore.unity.com/publishers/116963"
+                target="_blank"
+                rel="noopener noreferrer me"
+                >Publisher page</a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
 
-    <!-- Contact -->
-    <section id="contact" class="section alt reveal">
-      <div class="container">
-        <header class="section-header">
-          <h2 data-i18n="sections.contact.title"></h2>
-          <p data-i18n="sections.contact.subtitle"></p>
-        </header>
-        <ul class="contact-list">
-          <li><span data-i18n="sections.contact.email_label"></span> <a href="mailto:pschengoski@hotmail.com">pschengoski@hotmail.com</a></li>
-          <li><span data-i18n="sections.contact.github_label"></span> <a href="https://github.com/Jobberson" target="_blank" rel="noopener noreferrer me">github.com/Jobberson</a></li>
-          <li><span data-i18n="sections.contact.itch_label"></span> <a href="https://snogg.itch.io/" target="_blank" rel="noopener noreferrer me">snogg.itch.io</a></li>
-          <li><span data-i18n="sections.contact.linkedin_label"></span> <a href="https://www.linkedin.com/in/pedro-schenegoski-ab0a92258/" target="_blank" rel="noopener noreferrer me">linkedin.com/in/pedro-schenegoski</a></li>
-          <li><span data-i18n="sections.contact.asset_store_label"></span> <a href="https://assetstore.unity.com/publishers/116963" target="_blank" rel="noopener noreferrer me">assetstore.unity.com/publishers/116963</a></li>
-        </ul>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <small>© <span id="year"></span> Pedro Schenegoski </small>
-    </div>
-  </footer>
-</body>
+    <footer><div class="wrap">© 2026 Pedro Schenegoski</div></footer>
+  </body>
 </html>

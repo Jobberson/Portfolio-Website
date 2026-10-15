@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' https: data:; style-src 'self'; object-src 'none'; base-uri 'self'"
+    />
+    <title>Rogue Dungeons Project | Pedro Schenegoski</title>
+    <meta
+      name="description"
+      content="Um dungeon crawler roguelite cooperativo local para 4 jogadores, ambientado numa cidade que é uma única máquina gigante. Um estudo de caso de design de sistemas, balanceamento cooperativo e identidade do jogador."
+    />
+    <meta name="theme-color" content="#0a0c14" />
+    <link rel="icon" href="../img/favicon.png" />
+    <meta
+      property="og:title"
+      content="Rogue Dungeons Project | Pedro Schenegoski"
+    />
+    <meta
+      property="og:description"
+      content="Um dungeon crawler roguelite cooperativo local para 4 jogadores, ambientado numa cidade que é uma única máquina gigante. Um estudo de caso de design de sistemas, balanceamento cooperativo e identidade do jogador."
+    />
+    <meta
+      property="og:image"
+      content="https://pedroschenegoski.com/img/og.jpg"
+    />
+    <meta property="og:locale" content="pt_BR" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://pedroschenegoski.com/rogue-dungeons.html"
+    />
+    <link
+      rel="alternate"
+      hreflang="pt-BR"
+      href="https://pedroschenegoski.com/pt/rogue-dungeons.html"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://pedroschenegoski.com/rogue-dungeons.html"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/weapon-calculator.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Ir para o conteúdo</a>
+    <header class="top">
+      <div class="wrap">
+        <a class="brand" href="index.html">Pedro Schenegoski</a>
+        <nav aria-label="Principal">
+          <a href="index.html#work">Trabalhos</a
+          ><a href="index.html#tools">Ferramentas e escrita</a
+          ><a href="index.html#about">Sobre</a
+          ><a href="index.html#contact">Contato</a
+          ><a class="lang" href="../rogue-dungeons.html" hreflang="en" lang="en"
+            >English</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="case-page">
+      <div class="wrap">
+        <a href="index.html#work">Voltar aos trabalhos selecionados</a>
+        <h1>Rogue Dungeons Project</h1>
+        <p class="lede">
+          Um dungeon crawler roguelite cooperativo local para 4 jogadores,
+          ambientado em Aurion, uma cidade que é uma única máquina gigante. Você
+          controla um chip senciente que pilota chassis de robô intercambiáveis,
+          subindo a torre em grupo contra o sistema que o construiu.
+        </p>
+        <div class="shot draft">Captura de tela em breve</div>
+        <dl class="facts">
+          <div>
+            <dt>Função</dt>
+            <dd>Game designer líder, Knock Up Game Studio</dd>
+          </div>
+          <div>
+            <dt>Equipe</dt>
+            <dd>Equipe de 10 pessoas, comigo como único game designer</dd>
+          </div>
+          <div>
+            <dt>Período</dt>
+            <dd>Abril de 2026 até o momento, em desenvolvimento</dd>
+          </div>
+          <div>
+            <dt>Ferramentas</dt>
+            <dd>Unity (C#), Google Docs e Planilhas</dd>
+          </div>
+        </dl>
+        <h2>O problema de design</h2>
+        <p>
+          O jogo é cooperativo durante toda a subida da cidade, mas só um
+          jogador pode ficar no topo no final, depois do chefe final. Isso
+          significa que cada custo compartilhado, como gastar a própria vida
+          para trazer um amigo de volta, precisa valer a pena mesmo que esse
+          amigo possa se tornar seu adversário. Eu precisava de sistemas
+          cooperativos em que ajudar fosse uma decisão real, sem punir a
+          generosidade com tanta dureza e mantendo o jogo balanceado.
+        </p>
+        <h2>Decisões-chave</h2>
+        <h3>
+          Reviver um colega custa vida, e o jogo nunca fica mais
+          fácil
+        </h3>
+        <p>
+          A reanimação acontece num terminal, numa sala especial, e é paga com o
+          HP de quem revive. O terminal pode ser usado mais de uma vez, mas cada
+          uso custa mais, os mortos são revividos na ordem em que caíram, e quem
+          acabou de voltar não pode apertar o botão para o próximo. A
+          dificuldade dos inimigos é calibrada para o tamanho do grupo quando a
+          partida começa e nunca diminui quando alguém morre, então deixar um
+          colega para trás torna o resto da subida mais difícil para todos.
+          Ajudar faz sentido na maior parte da torre, e a hesitação só aparece
+          de verdade perto do topo.
+        </p>
+        <h3>Um valor-base por trás de cada número de dano</h3>
+        <p>
+          O dano estava escrito em níveis (baixo, médio, alto) sem nenhum número
+          por trás, então nada podia ser testado. Montei uma planilha de
+          balanceamento que transforma os atributos de cada arma (nível de dano,
+          cadência de tiro, munição, quantidade e velocidade dos projéteis,
+          ricochete, perfuração e a área em que aparece) em um único
+          multiplicador do seu dano. Isso permite balancear entre si armas com
+          características muito diferentes, e eu posso reajustar qualquer arma
+          mudando seus atributos.
+        </p>
+        <div class="calc" id="weapon-calc">
+          <p>
+            Cada característica da arma tem um fator, e o multiplicador de uma
+            arma é o produto de todos eles: área × nível de dano × cadência de
+            tiro × (150 ÷ munição máxima) × (20 ÷ tamanho do carregador) ×
+            projéteis por disparo × velocidade do projétil × ricochetes ×
+            perfuração. O multiplicador é aplicado ao dano daquela arma.
+          </p>
+          <div
+            class="calc-scroll"
+            role="region"
+            aria-label="Armas na planilha de balanceamento"
+            tabindex="0"
+          >
+            <table class="calc-weapons">
+              <caption>
+                Armas dos Slums na planilha de balanceamento
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Arma</th>
+                  <th scope="col">Dano</th>
+                  <th scope="col">Cadência de tiro</th>
+                  <th scope="col">Munição máx. / carregador</th>
+                  <th scope="col">Projéteis</th>
+                  <th scope="col">Velocidade</th>
+                  <th scope="col">Multiplicador</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  data-area="slums"
+                  data-damage="low"
+                  data-rate="low"
+                  data-ammo="150"
+                  data-clip="20"
+                  data-count="1"
+                  data-speed="vslow"
+                  data-bounce="0"
+                  data-pierce="no"
+                >
+                  <th scope="row">Maçarico</th>
+                  <td>Baixo</td>
+                  <td>Baixa</td>
+                  <td>150 / 20</td>
+                  <td>1</td>
+                  <td>Muito lenta</td>
+                  <td>0,806</td>
+                </tr>
+                <tr
+                  data-area="slums"
+                  data-damage="mid"
+                  data-rate="mid"
+                  data-ammo="250"
+                  data-clip="25"
+                  data-count="1"
+                  data-speed="mid"
+                  data-bounce="0"
+                  data-pierce="no"
+                >
+                  <th scope="row">Lançador de Pregos</th>
+                  <td>Médio</td>
+                  <td>Média</td>
+                  <td>250 / 25</td>
+                  <td>1</td>
+                  <td>Média</td>
+                  <td>0,672</td>
+                </tr>
+                <tr
+                  data-area="slums"
+                  data-damage="low"
+                  data-rate="low"
+                  data-ammo="150"
+                  data-clip="15"
+                  data-count="1"
+                  data-speed="slow"
+                  data-bounce="0"
+                  data-pierce="no"
+                >
+                  <th scope="row">Pistola de Solda</th>
+                  <td>Baixo</td>
+                  <td>Baixa</td>
+                  <td>150 / 15</td>
+                  <td>1</td>
+                  <td>Lenta</td>
+                  <td>1,434</td>
+                </tr>
+                <tr
+                  data-default
+                  data-area="slums"
+                  data-damage="high"
+                  data-rate="low"
+                  data-ammo="150"
+                  data-clip="6"
+                  data-count="1"
+                  data-speed="mid"
+                  data-bounce="0"
+                  data-pierce="no"
+                >
+                  <th scope="row">Besta Compacta</th>
+                  <td>Alto</td>
+                  <td>Baixa</td>
+                  <td>150 / 6</td>
+                  <td>1</td>
+                  <td>Média</td>
+                  <td>6,72</td>
+                </tr>
+                <tr
+                  data-area="slums"
+                  data-damage="vlow"
+                  data-rate="mid"
+                  data-ammo="175"
+                  data-clip="6"
+                  data-count="1"
+                  data-speed="slow"
+                  data-bounce="0"
+                  data-pierce="no"
+                >
+                  <th scope="row">Revólver Enferrujado</th>
+                  <td>Muito baixo</td>
+                  <td>Média</td>
+                  <td>175 / 6</td>
+                  <td>1</td>
+                  <td>Lenta</td>
+                  <td>1,92</td>
+                </tr>
+                <tr
+                  data-area="slums"
+                  data-damage="low"
+                  data-rate="mid"
+                  data-ammo="300"
+                  data-clip="32"
+                  data-count="1"
+                  data-speed="mid"
+                  data-bounce="0"
+                  data-pierce="no"
+                >
+                  <th scope="row">Rifle de Sucata</th>
+                  <td>Baixo</td>
+                  <td>Média</td>
+                  <td>300 / 32</td>
+                  <td>1</td>
+                  <td>Média</td>
+                  <td>0,35</td>
+                </tr>
+                <tr
+                  data-area="slums"
+                  data-damage="low"
+                  data-rate="mid"
+                  data-ammo="150"
+                  data-clip="8"
+                  data-count="5"
+                  data-speed="slow"
+                  data-bounce="0"
+                  data-pierce="no"
+                >
+                  <th scope="row">Dispersor de Fragmentos</th>
+                  <td>Baixo</td>
+                  <td>Média</td>
+                  <td>150 / 8</td>
+                  <td>5</td>
+                  <td>Lenta</td>
+                  <td>0,96</td>
+                </tr>
+                <tr
+                  data-area="slums"
+                  data-damage="low"
+                  data-rate="high"
+                  data-ammo="350"
+                  data-clip="25"
+                  data-count="2"
+                  data-speed="fast"
+                  data-bounce="0"
+                  data-pierce="no"
+                >
+                  <th scope="row">Lança Parafuso</th>
+                  <td>Baixo</td>
+                  <td>Alta</td>
+                  <td>350 / 25</td>
+                  <td>2</td>
+                  <td>Rápida</td>
+                  <td>0,316</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="calc-example">
+            Exemplo resolvido, Besta Compacta: 1 (Slums) × 1,2 (dano alto) × 1,2
+            (cadência baixa) × 1 (150 de munição máx.) × 3,33 (carregador de 6)
+            × 1,4 (1 projétil) × 1 (velocidade média) × 1 (sem ricochete) × 1
+            (sem perfuração) = 6,72.
+          </p>
+        </div>
+        <h3>
+          Diferenciar quatro jogadores quando os corpos deles mudam o tempo todo
+        </h3>
+        <p>
+          Os jogadores trocam de chassi com frequência, e a arte é desenhada à
+          mão quadro a quadro, então redesenhar um personagem para cada opção de
+          customização não era viável. Abandonei os visuais aleatórios. Um
+          chassi vazio agora é uma casca simples e, quando um chip entra nele,
+          ele assume a aparência do emblema daquele jogador, um par de cor e
+          elemento que também tinge as habilidades por meio de um único shader.
+          Uma silhueta de cabeça separada, ligada ao assento do jogador, dá
+          reconhecimento instantâneo que sobrevive às trocas de chassi e ao
+          daltonismo.
+        </p>
+        <div class="shot draft">Captura de tela em breve</div>
+        <div class="next">
+          <a href="index.html#work">Todos os trabalhos</a
+          ><a href="you-stayed.html">Próximo: You Stayed</a>
+        </div>
+      </div>
+    </main>
+    <footer><div class="wrap">© 2026 Pedro Schenegoski</div></footer>
+  </body>
+</html>

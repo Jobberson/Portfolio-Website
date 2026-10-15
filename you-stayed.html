@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' https: data:; style-src 'self'; object-src 'none'; base-uri 'self'"
+    />
+    <title>You Stayed | Pedro Schenegoski</title>
+    <meta
+      name="description"
+      content="A psychological horror prototype about grief and guilt, played as a text adventure on an in-game terminal while a 3D room slowly takes over."
+    />
+    <meta name="theme-color" content="#0a0c14" />
+    <link rel="icon" href="img/favicon.png" />
+    <meta property="og:title" content="You Stayed | Pedro Schenegoski" />
+    <meta
+      property="og:description"
+      content="A psychological horror prototype about grief and guilt, played as a text adventure on an in-game terminal while a 3D room slowly takes over."
+    />
+    <meta
+      property="og:image"
+      content="https://pedroschenegoski.com/img/og.jpg"
+    />
+    <meta property="og:locale" content="en_US" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://pedroschenegoski.com/you-stayed.html"
+    />
+    <link
+      rel="alternate"
+      hreflang="pt-BR"
+      href="https://pedroschenegoski.com/pt/you-stayed.html"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://pedroschenegoski.com/you-stayed.html"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="top">
+      <div class="wrap">
+        <a class="brand" href="index.html">Pedro Schenegoski</a>
+        <nav aria-label="Primary">
+          <a href="index.html#work">Work</a
+          ><a href="index.html#tools">Tools and writing</a
+          ><a href="index.html#about">About</a
+          ><a href="index.html#contact">Contact</a
+          ><a
+            class="lang"
+            href="pt/you-stayed.html"
+            hreflang="pt-BR"
+            lang="pt-BR"
+            >Português</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="case-page">
+      <div class="wrap">
+        <a href="index.html#work">Back to selected work</a>
+        <h1>You Stayed</h1>
+        <p class="lede">
+          A psychological horror prototype about grief and guilt. You play a
+          text adventure on an in-game terminal while a 3D room around it
+          slowly takes over the game.
+        </p>
+        <div class="shot">
+          <img
+            src="img/youStayed-ss.png"
+            width="1920"
+            height="1080"
+            alt="A dimly lit 3D room seen from above, with a bed, a desk with a computer, two lamps and a door, floating in a black void"
+          />
+        </div>
+        <div class="cta">
+          <a
+            class="btn main"
+            href="https://snogg.itch.io/you-stayed"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Play the prototype on itch.io</a
+          >
+        </div>
+        <dl class="facts">
+          <div>
+            <dt>Role</dt>
+            <dd>Solo game and narrative design, and development</dd>
+          </div>
+          <div>
+            <dt>Team</dt>
+            <dd>Solo</dd>
+          </div>
+          <div>
+            <dt>Timeline</dt>
+            <dd>February 2025 to March 2025. Prototype, development stopped</dd>
+          </div>
+          <div>
+            <dt>Tools</dt>
+            <dd>Unity (C#)</dd>
+          </div>
+        </dl>
+        <h2>The design problem</h2>
+        <p>
+          I wanted the horror to bleed into the game slowly. The player spends
+          their time working through a case file on a terminal, using commands
+          and exploring the scene. Only at the end do they see that this habit
+          is what the protagonist is answering for.
+          That only works if the player never feels accused and can't point to
+          the moment the game turned on them. So the problem was how to take control
+          away from the player, slowly enough, but impactfully enough, that
+          they don't notice until the end and can see all the signs of it on a
+          replay.
+        </p>
+        <h2>Key decisions</h2>
+        <h3>Simple commands that reward curiosity</h3>
+        <p>
+          The game only has a few simple commands that are shown in the HELP section,
+          but the player can do so much more than that.
+          They can explore pretty much anything they desire, and as a detective, this
+          only makes the immersion stronger. The player, though, can finish the whole game
+          without seeing much of it, so those who replay it will always find
+          something new.
+        </p>
+        <h3>Taking options away instead of adding threats</h3>
+        <p>
+          There is no monster. The horror is in the loss of control. The trauma the protagonist went 
+          through creates this alternate reality in which they can cope with what happened, slowly 
+          being uncovered, and the player has to live through this uncovering. 
+          It isn't about amnesia, but what extreme trauma can do to someone's mind.
+          The game quietly reinforces that throughout its entirety, until the loss
+          of control is loud enough to stop being something the player just ignores.
+        </p>
+        <h3>The player doesn't notice until it's too late</h3>
+        <p>
+          The game runs a terminal and a 3D room at once, and they start
+          unconnected. I let them affect each other in four stages: nothing in
+          Act 1, the room reacting to text choices in Act 2, the text
+          referencing real objects in the room in Act 3, and full collapse in
+          Act 4. The rule is that every bleed event must be deniable on its
+          own, as a coincidence, so the player can't be sure
+          until the end. The room has to read as just what it is first and become
+          the truth by the end. One manager listens to narrative events 
+          and drives the room, so I can pace the whole thing from a single place.
+        </p>
+        <!--
+          TODO: "What I'd change" for You Stayed. Write this in your own words, then
+          uncomment it (and add the Portuguese version in pt/you-stayed.html).
+          Ideas to answer: why development stopped, and what you would do differently.
+        <h2>What I'd change</h2>
+        <p>...</p>
+        -->
+        <div class="next">
+          <a href="index.html#work">All work</a
+          ><a href="heart-of-the-garden.html">Next: The Heart of the Garden</a>
+        </div>
+      </div>
+    </main>
+    <footer><div class="wrap">© 2026 Pedro Schenegoski</div></footer>
+  </body>
+</html>

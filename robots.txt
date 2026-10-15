@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pedroschenegoski.com/sitemap.xml

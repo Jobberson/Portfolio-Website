@@ -1,0 +1,101 @@
+.calc {
+  margin: 2rem 0;
+  color-scheme: dark;
+}
+.calc-scroll {
+  overflow-x: auto;
+}
+.calc table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.calc caption {
+  text-align: left;
+  padding-bottom: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+.calc th,
+.calc td {
+  padding: 0.45rem 0.6rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+}
+.calc thead th {
+  font-size: 0.85rem;
+  font-weight: 600;
+  opacity: 0.75;
+}
+.calc thead th:last-child,
+.calc td:last-child {
+  text-align: right;
+}
+.calc-weapons td:last-child {
+  font-weight: 600;
+}
+.calc tr.is-active {
+  background: rgba(255, 255, 255, 0.06);
+}
+.calc-live {
+  margin-top: 1.5rem;
+}
+.calc-pick {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  text-decoration: underline dotted;
+  text-underline-offset: 0.2em;
+}
+.calc-pick[aria-pressed="true"] {
+  font-weight: 700;
+  text-decoration-style: solid;
+}
+.calc-fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0.9rem 1rem;
+  margin: 1rem 0;
+}
+.calc-fields label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+}
+.calc-fields select,
+.calc-fields input[type="number"] {
+  font: inherit;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  padding: 0.4rem 0.5rem;
+}
+.calc-fields .calc-check {
+  flex-direction: row;
+  align-items: center;
+  align-self: end;
+  gap: 0.5rem;
+  padding: 0.4rem 0;
+}
+.calc-factors tfoot th,
+.calc-factors tfoot td {
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 0;
+  font-weight: 700;
+}
+.calc output {
+  font-size: 1.5rem;
+}
+.calc-scroll:focus-visible,
+.calc button:focus-visible,
+.calc select:focus-visible,
+.calc input:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}

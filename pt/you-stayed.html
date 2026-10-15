@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' https: data:; style-src 'self'; object-src 'none'; base-uri 'self'"
+    />
+    <title>You Stayed | Pedro Schenegoski</title>
+    <meta
+      name="description"
+      content="Um protótipo de terror psicológico sobre luto e culpa, jogado como uma aventura de texto num terminal dentro do jogo enquanto uma sala 3D aos poucos toma conta de tudo."
+    />
+    <meta name="theme-color" content="#0a0c14" />
+    <link rel="icon" href="../img/favicon.png" />
+    <meta property="og:title" content="You Stayed | Pedro Schenegoski" />
+    <meta
+      property="og:description"
+      content="Um protótipo de terror psicológico sobre luto e culpa, jogado como uma aventura de texto num terminal dentro do jogo enquanto uma sala 3D aos poucos toma conta de tudo."
+    />
+    <meta
+      property="og:image"
+      content="https://pedroschenegoski.com/img/og.jpg"
+    />
+    <meta property="og:locale" content="pt_BR" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://pedroschenegoski.com/you-stayed.html"
+    />
+    <link
+      rel="alternate"
+      hreflang="pt-BR"
+      href="https://pedroschenegoski.com/pt/you-stayed.html"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://pedroschenegoski.com/you-stayed.html"
+    />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Ir para o conteúdo</a>
+    <header class="top">
+      <div class="wrap">
+        <a class="brand" href="index.html">Pedro Schenegoski</a>
+        <nav aria-label="Principal">
+          <a href="index.html#work">Trabalhos</a
+          ><a href="index.html#tools">Ferramentas e escrita</a
+          ><a href="index.html#about">Sobre</a
+          ><a href="index.html#contact">Contato</a
+          ><a class="lang" href="../you-stayed.html" hreflang="en" lang="en"
+            >English</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="case-page">
+      <div class="wrap">
+        <a href="index.html#work">Voltar aos trabalhos selecionados</a>
+        <h1>You Stayed</h1>
+        <p class="lede">
+          Um protótipo de terror psicológico sobre luto e culpa. Você joga uma
+          aventura de texto num terminal dentro do jogo, enquanto uma sala 3D ao
+          redor aos poucos toma conta do jogo.
+        </p>
+        <div class="shot">
+          <img
+            src="../img/youStayed-ss.png"
+            width="1920"
+            height="1080"
+            alt="Uma sala 3D pouco iluminada, vista de cima, com uma cama, uma escrivaninha com um computador, dois abajures e uma porta, flutuando num vazio preto"
+          />
+        </div>
+        <div class="cta">
+          <a
+            class="btn main"
+            href="https://snogg.itch.io/you-stayed"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Jogar o protótipo no itch.io</a
+          >
+        </div>
+        <dl class="facts">
+          <div>
+            <dt>Função</dt>
+            <dd>Design de jogo e narrativa, e desenvolvimento solo</dd>
+          </div>
+          <div>
+            <dt>Equipe</dt>
+            <dd>Solo</dd>
+          </div>
+          <div>
+            <dt>Período</dt>
+            <dd>
+              Fevereiro de 2025 a março de 2025. Protótipo, desenvolvimento
+              encerrado
+            </dd>
+          </div>
+          <div>
+            <dt>Ferramentas</dt>
+            <dd>Unity (C#)</dd>
+          </div>
+        </dl>
+        <h2>O problema de design</h2>
+        <p>
+          Eu queria que o horror entrasse no jogo aos poucos. O jogador passa o
+          tempo investigando um arquivo de caso num terminal, usando comandos e
+          explorando a cena. Só no final ele percebe que esse hábito é
+          justamente aquilo pelo qual o protagonista está sendo cobrado. Isso só
+          funciona se o jogador nunca se sentir acusado e não conseguir apontar
+          o momento em que o jogo se virou contra ele. Então o problema era como
+          tirar o controle das mãos do jogador, devagar o bastante, mas com
+          impacto suficiente, para que ele só perceba no final e consiga ver
+          todos os sinais ao jogar de novo.
+        </p>
+        <h2>Decisões-chave</h2>
+        <h3>Comandos simples que recompensam a curiosidade</h3>
+        <p>
+          O jogo tem só alguns comandos simples, listados na seção HELP, mas o
+          jogador pode fazer muito mais do que isso. Dá para explorar
+          praticamente tudo o que se quiser e, como detetive, isso só reforça a
+          imersão. O jogador, porém, pode terminar o jogo sem ver boa parte dele,
+          então quem joga de novo sempre encontra algo novo.
+        </p>
+        <h3>Tirar opções em vez de adicionar ameaças</h3>
+        <p>
+          Não existe monstro. O horror está na perda de controle. O trauma que o
+          protagonista viveu cria essa realidade alternativa em que ele consegue
+          lidar com o que aconteceu, sendo revelada aos poucos, e o jogador
+          precisa viver essa revelação. Não se trata de amnésia, mas do que um
+          trauma extremo pode fazer com a mente de alguém. O jogo reforça isso
+          discretamente do começo ao fim, até que a perda de controle fique alta
+          o bastante para deixar de ser algo que o jogador simplesmente ignora.
+        </p>
+        <h3>O jogador só percebe quando já é tarde</h3>
+        <p>
+          O jogo roda um terminal e uma sala 3D ao mesmo tempo, e no começo eles
+          não têm ligação nenhuma. Eu deixo um afetar o outro em quatro
+          estágios: nada no Ato 1, a sala reagindo às escolhas de texto no Ato
+          2, o texto citando objetos reais da sala no Ato 3 e o colapso total no
+          Ato 4. A regra é que cada evento de vazamento (bleed) precisa poder
+          ser negado isoladamente, como coincidência, para que o jogador só
+          tenha certeza no final. A sala precisa ser lida primeiro como o que
+          ela é e virar a verdade só no fim. Um único gerenciador escuta os
+          eventos narrativos e controla a sala, então consigo ajustar o ritmo de
+          tudo num lugar só.
+        </p>
+        <!--
+          TODO: "O que eu mudaria" for You Stayed. Translate it after the English
+          version in you-stayed.html is written and uncommented.
+        -->
+        <div class="next">
+          <a href="index.html#work">Todos os trabalhos</a
+          ><a href="heart-of-the-garden.html"
+            >Próximo: The Heart of the Garden</a
+          >
+        </div>
+      </div>
+    </main>
+    <footer><div class="wrap">© 2026 Pedro Schenegoski</div></footer>
+  </body>
+</html>

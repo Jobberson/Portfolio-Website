@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' https: data:; style-src 'self'; object-src 'none'; base-uri 'self'"
+    />
+    <title>Rogue Dungeons Project | Pedro Schenegoski</title>
+    <meta
+      name="description"
+      content="A 4-player local co-op roguelite dungeon crawler set in a city that is one giant machine. A case study in systems design, co-op balance, and player identity."
+    />
+    <meta name="theme-color" content="#0a0c14" />
+    <link rel="icon" href="img/favicon.png" />
+    <meta
+      property="og:title"
+      content="Rogue Dungeons Project | Pedro Schenegoski"
+    />
+    <meta
+      property="og:description"
+      content="A 4-player local co-op roguelite dungeon crawler set in a city that is one giant machine. A case study in systems design, co-op balance, and player identity."
+    />
+    <meta
+      property="og:image"
+      content="https://pedroschenegoski.com/img/og.jpg"
+    />
+    <meta property="og:locale" content="en_US" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://pedroschenegoski.com/rogue-dungeons.html"
+    />
+    <link
+      rel="alternate"
+      hreflang="pt-BR"
+      href="https://pedroschenegoski.com/pt/rogue-dungeons.html"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://pedroschenegoski.com/rogue-dungeons.html"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/weapon-calculator.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="top">
+      <div class="wrap">
+        <a class="brand" href="index.html">Pedro Schenegoski</a>
+        <nav aria-label="Primary">
+          <a href="index.html#work">Work</a
+          ><a href="index.html#tools">Tools and writing</a
+          ><a href="index.html#about">About</a
+          ><a href="index.html#contact">Contact</a
+          ><a
+            class="lang"
+            href="pt/rogue-dungeons.html"
+            hreflang="pt-BR"
+            lang="pt-BR"
+            >Português</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="case-page">
+      <div class="wrap">
+        <a href="index.html#work">Back to selected work</a>
+        <h1>Rogue Dungeons Project</h1>
+        <p class="lede">
+          A 4-player local co-op roguelite dungeon crawler set in Aurion, a city
+          that is one giant machine. You play a sentient chip that pilots
+          swappable robot chassis, climbing the tower together against the
+          system that built it.
+        </p>
+        <div class="shot draft">Screenshot coming</div>
+        <dl class="facts">
+          <div>
+            <dt>Role</dt>
+            <dd>Lead game designer, Knock Up Game Studio</dd>
+          </div>
+          <div>
+            <dt>Team</dt>
+            <dd>Team of 10, with me as the only game designer</dd>
+          </div>
+          <div>
+            <dt>Timeline</dt>
+            <dd>April 2026 to present, in development</dd>
+          </div>
+          <div>
+            <dt>Tools</dt>
+            <dd>Unity (C#), Google Docs and Sheets</dd>
+          </div>
+        </dl>
+        <h2>The design problem</h2>
+        <p>
+          The game is cooperative all the way up the city, but only one player
+          can stay at the top in the end after the final boss. That means every
+          shared cost, like spending your own health to bring a friend back, has
+          to be worth paying even though that friend might become your opponent.
+          I needed co-op systems where helping is a real decision, without
+          punishing generosity too hard, while keeping the game balanced.
+        </p>
+        <h2>Key decisions</h2>
+        <h3>
+          Reviving a teammate costs real health, and the game never gets easier
+        </h3>
+        <p>
+          Revival happens at a terminal in a special room and is paid for with
+          the reviver's own HP. The terminal can be used more than once, but
+          each press costs more, the dead are revived in the order they fell,
+          and someone just brought back can't press the button for the next one.
+          Enemy difficulty is calibrated to party size when the run starts and
+          never drops when someone dies, so leaving a teammate behind makes the rest of
+          the climb harder for everyone. Helping makes sense for most of the
+          tower, and the hesitation only really arrives near the top.
+        </p>
+        <h3>One base value behind every damage number</h3>
+        <p>
+          Damage was written as tiers (low, medium, high) with no numbers behind
+          them, so nothing could be tested. I built a balancing sheet that turns
+          each weapon's attributes (damage tier, fire rate, ammo, projectile
+          count and speed, ricochet, piercing, and the area it appears in) into
+          a single multiplier for its damage. That lets weapons with very
+          different traits be balanced against each other, and I can retune any
+          weapon by changing its attributes.
+        </p>
+        <div class="calc" id="weapon-calc">
+          <p>
+            Every weapon trait has a factor, and a weapon's multiplier is all of
+            them multiplied together: area × damage tier × fire rate × (150 ÷
+            max ammo) × (20 ÷ clip size) × projectiles per shot × projectile
+            speed × ricochets × piercing. The multiplier is applied to that
+            weapon's damage.
+          </p>
+          <div
+            class="calc-scroll"
+            role="region"
+            aria-label="Weapons in the balancing sheet"
+            tabindex="0"
+          >
+            <table class="calc-weapons">
+              <caption>
+                Slums weapons in the balancing sheet
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Weapon</th>
+                  <th scope="col">Damage</th>
+                  <th scope="col">Fire rate</th>
+                  <th scope="col">Max ammo / clip</th>
+                  <th scope="col">Projectiles</th>
+                  <th scope="col">Speed</th>
+                  <th scope="col">Multiplier</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  data-area="slums"
+                  data-damage="low"
+                  data-rate="low"
+                  data-ammo="150"
+                  data-clip="20"
+                  data-count="1"
+                  data-speed="vslow"
+                  data-bounce="0"
+                  data-pierce="no"
+                >
+                  <th scope="row">Maçarico</th>
+                  <td>Low</td>
+                  <td>Low</td>
+                  <td>150 / 20</td>
+                  <td>1</td>
+                  <td>Very slow</td>
+                  <td>0.806</td>
+                </tr>
+                <tr
+                  data-area="slums"
+                  data-damage="mid"
+                  data-rate="mid"
+                  data-ammo="250"
+                  data-clip="25"
+                  data-count="1"
+                  data-speed="mid"
+                  data-bounce="0"
+                  data-pierce="no"
+                >
+                  <th scope="row">Lançador de Pregos</th>
+                  <td>Medium</td>
+                  <td>Medium</td>
+                  <td>250 / 25</td>
+                  <td>1</td>
+                  <td>Medium</td>
+                  <td>0.672</td>
+                </tr>
+                <tr
+                  data-area="slums"
+                  data-damage="low"
+                  data-rate="low"
+                  data-ammo="150"
+                  data-clip="15"
+                  data-count="1"
+                  data-speed="slow"
+                  data-bounce="0"
+                  data-pierce="no"
+                >
+                  <th scope="row">Pistola de Solda</th>
+                  <td>Low</td>
+                  <td>Low</td>
+                  <td>150 / 15</td>
+                  <td>1</td>
+                  <td>Slow</td>
+                  <td>1.434</td>
+                </tr>
+                <tr
+                  data-default
+                  data-area="slums"
+                  data-damage="high"
+                  data-rate="low"
+                  data-ammo="150"
+                  data-clip="6"
+                  data-count="1"
+                  data-speed="mid"
+                  data-bounce="0"
+                  data-pierce="no"
+                >
+                  <th scope="row">Besta Compacta</th>
+                  <td>High</td>
+                  <td>Low</td>
+                  <td>150 / 6</td>
+                  <td>1</td>
+                  <td>Medium</td>
+                  <td>6.72</td>
+                </tr>
+                <tr
+                  data-area="slums"
+                  data-damage="vlow"
+                  data-rate="mid"
+                  data-ammo="175"
+                  data-clip="6"
+                  data-count="1"
+                  data-speed="slow"
+                  data-bounce="0"
+                  data-pierce="no"
+                >
+                  <th scope="row">Revólver Enferrujado</th>
+                  <td>Very low</td>
+                  <td>Medium</td>
+                  <td>175 / 6</td>
+                  <td>1</td>
+                  <td>Slow</td>
+                  <td>1.92</td>
+                </tr>
+                <tr
+                  data-area="slums"
+                  data-damage="low"
+                  data-rate="mid"
+                  data-ammo="300"
+                  data-clip="32"
+                  data-count="1"
+                  data-speed="mid"
+                  data-bounce="0"
+                  data-pierce="no"
+                >
+                  <th scope="row">Rifle de Sucata</th>
+                  <td>Low</td>
+                  <td>Medium</td>
+                  <td>300 / 32</td>
+                  <td>1</td>
+                  <td>Medium</td>
+                  <td>0.35</td>
+                </tr>
+                <tr
+                  data-area="slums"
+                  data-damage="low"
+                  data-rate="mid"
+                  data-ammo="150"
+                  data-clip="8"
+                  data-count="5"
+                  data-speed="slow"
+                  data-bounce="0"
+                  data-pierce="no"
+                >
+                  <th scope="row">Dispersor de Fragmentos</th>
+                  <td>Low</td>
+                  <td>Medium</td>
+                  <td>150 / 8</td>
+                  <td>5</td>
+                  <td>Slow</td>
+                  <td>0.96</td>
+                </tr>
+                <tr
+                  data-area="slums"
+                  data-damage="low"
+                  data-rate="high"
+                  data-ammo="350"
+                  data-clip="25"
+                  data-count="2"
+                  data-speed="fast"
+                  data-bounce="0"
+                  data-pierce="no"
+                >
+                  <th scope="row">Lança Parafuso</th>
+                  <td>Low</td>
+                  <td>High</td>
+                  <td>350 / 25</td>
+                  <td>2</td>
+                  <td>Fast</td>
+                  <td>0.316</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <br />
+          <p class="calc-example">
+            Worked example, Besta Compacta: 1 (Slums) × 1.2 (high damage) × 1.2
+            (low fire rate) × 1 (150 max ammo) × 3.33 (clip of 6) × 1.4 (1
+            projectile) × 1 (medium speed) × 1 (no ricochet) × 1 (no piercing) =
+            6.72.
+          </p>
+        </div>
+        <h3>Telling four players apart when their bodies keep changing</h3>
+        <p>
+          Players swap chassis often, and the art is hand-drawn frame by frame,
+          so redrawing a character for every customization option wasn't
+          affordable. I dropped randomized looks. An empty chassis is now a
+          plain shell, and when a chip moves in it takes on the look of that
+          player's emblem, a color and element pair that also tints their
+          abilities through one shader. A separate head silhouette tied to the
+          player's seat gives instant recognition that survives chassis swaps
+          and color blindness.
+        </p>
+        <div class="shot draft">Screenshot coming</div>
+        <div class="next">
+          <a href="index.html#work">All work</a
+          ><a href="you-stayed.html">Next: You Stayed</a>
+        </div>
+      </div>
+    </main>
+    <footer><div class="wrap">© 2026 Pedro Schenegoski</div></footer>
+  </body>
+</html>

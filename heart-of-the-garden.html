@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' https: data:; style-src 'self'; object-src 'none'; base-uri 'self'"
+    />
+    <title>The Heart of the Garden | Pedro Schenegoski</title>
+    <meta
+      name="description"
+      content='A short first-person puzzle adventure about love, built around non-Euclidean puzzles and one message: "My life only began after you."'
+    />
+    <meta name="theme-color" content="#0a0c14" />
+    <link rel="icon" href="img/favicon.png" />
+    <meta
+      property="og:title"
+      content="The Heart of the Garden | Pedro Schenegoski"
+    />
+    <meta
+      property="og:description"
+      content='A short first-person puzzle adventure about love, built around non-Euclidean puzzles and one message: "My life only began after you."'
+    />
+    <meta
+      property="og:image"
+      content="https://pedroschenegoski.com/img/og.jpg"
+    />
+    <meta property="og:locale" content="en_US" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://pedroschenegoski.com/heart-of-the-garden.html"
+    />
+    <link
+      rel="alternate"
+      hreflang="pt-BR"
+      href="https://pedroschenegoski.com/pt/heart-of-the-garden.html"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://pedroschenegoski.com/heart-of-the-garden.html"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="top">
+      <div class="wrap">
+        <a class="brand" href="index.html">Pedro Schenegoski</a>
+        <nav aria-label="Primary">
+          <a href="index.html#work">Work</a
+          ><a href="index.html#tools">Tools and writing</a
+          ><a href="index.html#about">About</a
+          ><a href="index.html#contact">Contact</a
+          ><a
+            class="lang"
+            href="pt/heart-of-the-garden.html"
+            hreflang="pt-BR"
+            lang="pt-BR"
+            >Português</a
+          >
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="case-page">
+      <div class="wrap">
+        <a href="index.html#work">Back to selected work</a>
+        <h1>The Heart of the Garden</h1>
+        <p class="lede">
+            A short first-person atmospheric puzzle adventure I designed and built solo 
+            as a birthday gift for my girlfriend. The world only exists because 
+            the player is paying attention to it, and every puzzle is built on 
+            that idea.
+        </p>
+        <div class="shot">
+          <img
+            src="img/tHotG-ss.png"
+            width="960"
+            height="445"
+            alt="Rays of sunlight falling through fog between pine trees, over a dirt path and a grassy slope"
+          />
+        </div>
+        <div class="cta">
+          <a
+            class="btn main"
+            href="https://snogg.itch.io/the-heart-of-the-garden"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Play the game on itch.io</a
+          >
+        </div>
+        <dl class="facts">
+          <div>
+            <dt>Role</dt>
+            <dd>
+              Solo game designer and developer<br />(Music:
+              <a
+                href="https://beacons.ai/alejandrabec"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Alejandra Bec</a
+              >)
+            </dd>
+          </div>
+          <div>
+            <dt>Timeline</dt>
+            <dd>Four months<br />Oct 13, 2025 to Feb 18, 2026</dd>
+          </div>
+          <div>
+            <dt>Playtime</dt>
+            <dd>10 to 20 minutes</dd>
+          </div>
+          <div>
+            <dt>Tools</dt>
+            <dd>Unity 6 (URP), C#</dd>
+          </div>
+        </dl>
+        <h2>The design problem</h2>
+        <p>
+          I wanted someone to feel what it was like when my life changed after 
+          meeting her, without any exposition. The game opens in an empty white 
+          void and only gains color after a single text message arrives.
+          That gave me one rule to design around: “My life only began after
+          you.” The hard part was turning this feeling into puzzles that can
+          still be solved by someone who doesn't know the story.
+        </p>
+        <h2>Key decisions</h2>
+        <h3>Mechanics as metaphors</h3>
+        <p>
+          Non-Euclidean tricks stand in for fragile memory and attention. In the
+          Mirror Room, five mirrors lead to five small worlds. In one, the maze
+          exit only appears once you look behind you. Another is a “bridge of
+          faith” whose platforms appear only as you step on them. Each mirror
+          gives you one object, and together they complete a constellation in
+          the main room.
+        </p>
+        <p>
+          I had a tight deadline and was still learning as I built, so I
+          simplified the puzzle ideas to what I could make work reliably. The
+          Repeating Room was meant to be a longer puzzle in which the player
+          would collect pieces from each stage of a room that degrades the
+          further you go. With a solo scope, I built a simpler version instead,
+          where the player walks through the degrading room to reach an item at
+          the end. The room still carries the idea that time is slipping away,
+          and it took a fraction of the time to build.
+        </p>
+        <h3>A phone instead of dialogue</h3>
+        <p>
+          The story starts with a text message that is only heard. The player finds a phone
+          in an empty white void, it vibrates, and the world begins to form. I chose a
+          phone because that's where the relationship began, and because it let me tell
+          the story through the environment and the puzzles, with no dialogue
+          boxes or cutscenes.
+        </p>
+        <h3>Art rules to fit the solo scope</h3>
+        <p>
+          Each chapter has one dominant hue, flat colors, gradient ramps and fog. 
+          This kept the build light for low-end PCs and let color carry the emotional 
+          arc, from white void to pale-blue mirrors to a fully colored garden,
+          carrying the idea that “the world gains color the more I'm with
+          you.”
+        </p>
+        <h2>What I'd change</h2>
+        <p>
+          I rushed it, and it shows. All five chapters shipped, but the last one, The
+          Letter, got the least attention. I'd rework it first, because the whole game
+          builds toward it, and right now it doesn't hold the player's
+          attention as well as it should. The puzzles also need clearer
+          environmental hints. My own final to-do list called for a hint on the
+          bridge and a hint that the light beam should end at the tree. With
+          more time I'd playtest it properly and fix the known bugs, starting
+          with Chapter 3, which is still the buggiest.
+        </p>
+        <div class="next">
+          <a href="index.html#work">All work</a
+          ><a href="rogue-dungeons.html">Next: Rogue Dungeons Project</a>
+        </div>
+      </div>
+    </main>
+    <footer><div class="wrap">© 2026 Pedro Schenegoski</div></footer>
+  </body>
+</html>
